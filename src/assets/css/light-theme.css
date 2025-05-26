@@ -1,0 +1,87 @@
+/* Light Theme */
+:root, html.light-mode {
+  --primary-color: #00ADB5;
+  --primary-hover: #009199;
+  --text-color: #2d3748;
+  --bg-color: #f7fafc;
+  --card-bg: #ffffff;
+  --border-color: #e2e8f0;
+  --nav-bg: #ffffff;
+  --nav-text: #4a5568;
+  --nav-hover: #00ADB5;
+  --footer-bg: #ffffff;
+  --code-bg: #f1f5f9;
+  --code-text: #2d3748;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --section-bg-alt: #f8fafc;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+nav {
+  background-color: var(--nav-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  color: var(--nav-text);
+}
+
+nav a:hover {
+  color: var(--nav-hover);
+}
+
+.section-alt {
+  background-color: var(--section-bg-alt);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.tech-icon {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+.blog-post {
+  background-color: var(--section-bg-alt);
+}
+
+.tag {
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.skill-badge {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.code-window {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+}
+
+footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Contact icons */
+.contact-icon {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}

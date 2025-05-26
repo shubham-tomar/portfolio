@@ -1,0 +1,95 @@
+/* Dark Theme */
+:root, html.dark-mode {
+  --primary-color: #4FD1C5;
+  --primary-hover: #38B2AC;
+  --text-color: #e2e8f0;
+  --bg-color: #1a202c;
+  --card-bg: #2d3748;
+  --border-color: #4a5568;
+  --nav-bg: #1a202c;
+  --nav-text: #e2e8f0;
+  --nav-hover: #4FD1C5;
+  --footer-bg: #2d3748;
+  --code-bg: #2d3748;
+  --code-text: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --section-bg-alt: #2d3748;
+}
+
+body {
+  background-color: var(--bg-color) !important;
+  color: var(--text-color) !important;
+}
+
+nav {
+  background-color: var(--nav-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+nav a {
+  color: var(--nav-text);
+}
+
+nav a:hover {
+  color: var(--nav-hover);
+}
+
+.section-alt {
+  background-color: var(--section-bg-alt);
+}
+
+.card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
+}
+
+.tech-icon {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.project-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+.blog-post {
+  background-color: var(--section-bg-alt);
+}
+
+.tag {
+  background-color: var(--border-color);
+  color: var(--text-color);
+}
+
+.skill-badge {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.code-window {
+  background-color: var(--code-bg);
+  color: var(--code-text);
+}
+
+footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Contact icons */
+.contact-icon {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+}
+
+/* Syntax highlighting for code blocks */
+.syntax-string { color: #9AE6B4; }
+.syntax-keyword { color: #D53F8C; }
+.syntax-function { color: #63B3ED; }
+.syntax-number { color: #F6AD55; }
+.syntax-operator { color: #FC8181; }
+.syntax-comment { color: #718096; }

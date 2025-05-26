@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shubham Tomar | Backend Developer</title>
+    <meta name="description" content="Backend Developer and Data Engineer specializing in building systems that scale">
+    <!-- Prevent theme flashing -->
+    <script>
+        // Check for saved theme preference or use the system preference
+        const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+        const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap">
+    <link rel="stylesheet" href="assets/css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white dark:bg-gray-900 shadow-sm z-50 transition-colors duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tight">Shubham<span class="text-teal-500">.</span></a>
+            <div class="hidden md:flex space-x-10">
+                <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Home</a>
+                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">About</a>
+                <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Projects</a>
+                <a href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Blog</a>
+                <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors">
+                    <svg id="sun-icon" class="w-5 h-5 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <svg id="moon-icon" class="w-5 h-5 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                </button>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="md:hidden hidden px-6 py-4 bg-white dark:bg-gray-900 shadow-lg">
+            <div class="flex flex-col space-y-4">
+                <a href="#home" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Home</a>
+                <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">About</a>
+                <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Projects</a>
+                <a href="#blog" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Blog</a>
+                <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-teal-500 dark:hover:text-teal-400 transition-colors">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-16">
+        <div class="container mx-auto px-6 py-20">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 md:pr-10" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">Shubham Tomar</h1>
+                    <p class="text-xl md:text-2xl mb-8 leading-relaxed hero-tagline">Backend Developer. Data Engineer.<br>I build systems that scale.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <a href="#projects" class="px-6 py-3 bg-teal-500 hover:bg-teal-600 text-white rounded-md transition-colors shadow-md hover:shadow-lg">View Projects</a>
+                        <a href="#" class="px-6 py-3 border border-gray-300 dark:border-gray-700 hover:border-teal-500 dark:hover:border-teal-500 rounded-md transition-colors">Resume</a>
+                        <a href="#blog" class="px-6 py-3 border border-gray-300 dark:border-gray-700 hover:border-teal-500 dark:hover:border-teal-500 rounded-md transition-colors">Blog</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-10 md:mt-0" data-aos="fade-left">
+                    <div class="p-2 bg-white dark:bg-gray-800 rounded-lg shadow-xl">
+                        <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-lg font-mono text-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            </div>
+                            <p class="text-gray-800 dark:text-gray-300"><span class="text-purple-600 dark:text-purple-400">const</span> <span class="text-blue-600 dark:text-blue-400">developer</span> = {</p>
+                            <p class="pl-4"><span class="text-red-600 dark:text-red-400">name</span>: <span class="text-green-600 dark:text-green-400">'Shubham Tomar'</span>,</p>
+                            <p class="pl-4"><span class="text-red-600 dark:text-red-400">skills</span>: [<span class="text-green-600 dark:text-green-400">'Go'</span>, <span class="text-green-600 dark:text-green-400">'Rust'</span>, <span class="text-green-600 dark:text-green-400">'Flink'</span>, <span class="text-green-600 dark:text-green-400">'Iceberg'</span>],</p>
+                            <p class="pl-4"><span class="text-red-600 dark:text-red-400">focus</span>: <span class="text-green-600 dark:text-green-400">'Building scalable systems'</span>,</p>
+                            <p class="pl-4"><span class="text-red-600 dark:text-red-400">available</span>: <span class="text-orange-600 dark:text-orange-400">true</span></p>
+                            <p>};</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-24 py-10 border-t border-gray-200 dark:border-gray-800" data-aos="fade-up">
+                <h3 class="text-center text-gray-600 dark:text-gray-400 text-sm mb-6">TECH STACK</h3>
+                <div class="flex flex-wrap justify-center gap-8 md:gap-12">
+                    <div class="tech-icon">Go</div>
+                    <div class="tech-icon">Rust</div>
+                    <div class="tech-icon">Flink</div>
+                    <div class="tech-icon">Iceberg</div>
+                    <div class="tech-icon">Postgres</div>
+                    <div class="tech-icon">Kafka</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 section-about">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 section-header" data-aos="fade-right">About Me</h2>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 md:pr-12 mb-8 md:mb-0" data-aos="fade-up">
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                        I'm a Backend Developer and Data Engineer focused on building scalable, efficient systems. With expertise in Go, Rust, and data processing frameworks like Apache Flink and Apache Iceberg, I create robust solutions for complex data challenges.
+                    </p>
+                    <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
+                        My approach combines strong engineering fundamentals with a deep understanding of distributed systems and performance optimization. I enjoy working on projects that require technical depth and creative problem-solving.
+                    </p>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="mb-10">
+                        <h3 class="text-xl font-semibold mb-4">Technical Skills</h3>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase mb-2">Languages</h4>
+                                <div class="flex flex-wrap">
+                                    <span class="skill-badge">Go</span>
+                                    <span class="skill-badge">Rust</span>
+                                    <span class="skill-badge">Python</span>
+                                    <span class="skill-badge">SQL</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase mb-2">Frameworks</h4>
+                                <div class="flex flex-wrap">
+                                    <span class="skill-badge">Flink</span>
+                                    <span class="skill-badge">Iceberg</span>
+                                    <span class="skill-badge">gRPC</span>
+                                    <span class="skill-badge">GraphQL</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase mb-2">Infrastructure</h4>
+                                <div class="flex flex-wrap">
+                                    <span class="skill-badge">Kubernetes</span>
+                                    <span class="skill-badge">Docker</span>
+                                    <span class="skill-badge">AWS</span>
+                                    <span class="skill-badge">Terraform</span>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase mb-2">Data</h4>
+                                <div class="flex flex-wrap">
+                                    <span class="skill-badge">PostgreSQL</span>
+                                    <span class="skill-badge">Kafka</span>
+                                    <span class="skill-badge">Redis</span>
+                                    <span class="skill-badge">Elasticsearch</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Currently</h3>
+                        <div class="flex space-x-8">
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase mb-2">Reading</h4>
+                                <p class="text-gray-700 dark:text-gray-300">Database Internals</p>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-600 dark:text-gray-400 uppercase mb-2">Working On</h4>
+                                <p class="text-gray-700 dark:text-gray-300">IceBridge Project</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 section-projects">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 section-header" data-aos="fade-right">Projects</h2>
+            
+            <div class="flex justify-center mb-10" data-aos="fade-up">
+                <div class="inline-flex rounded-md shadow-sm">
+                    <button class="filter-btn active px-4 py-2 text-sm font-medium bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-l-md hover:bg-gray-100 dark:hover:bg-gray-700" data-filter="all">All</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium bg-white dark:bg-gray-800 border-t border-b border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700" data-filter="backend">Backend</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium bg-white dark:bg-gray-800 border-t border-b border-r border-gray-200 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700" data-filter="data">Data</button>
+                    <button class="filter-btn px-4 py-2 text-sm font-medium bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-r-md hover:bg-gray-100 dark:hover:bg-gray-700" data-filter="infra">Infrastructure</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="project-item backend data bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md project-card" data-aos="fade-up">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">IceBridge</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">A high-performance connector between Apache Iceberg and various data systems.</p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="tag">Go</span>
+                            <span class="tag">Iceberg</span>
+                            <span class="tag">Data</span>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400">GitHub</a>
+                            <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400">Demo</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-item data bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Real-Time ETL Pipeline</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Scalable ETL system using Apache Flink for stream processing with exactly-once semantics.</p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="tag">Flink</span>
+                            <span class="tag">Kafka</span>
+                            <span class="tag">Streaming</span>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400">GitHub</a>
+                            <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400">Blog Post</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-item backend infra bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">CLI Tool in Rust</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4">Command-line utility for database administration tasks with parallel execution capabilities.</p>
+                        <div class="flex flex-wrap mb-4">
+                            <span class="tag">Rust</span>
+                            <span class="tag">CLI</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                        <div class="flex justify-between mt-4">
+                            <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400">GitHub</a>
+                            <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400">Documentation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 section-blog">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 section-header" data-aos="fade-right">Blog</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="blog-post bg-gray-50 dark:bg-gray-900 rounded-lg p-6" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-2">Optimizing PostgreSQL for Data-Intensive Applications</h3>
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <span>May 15, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">An in-depth look at tuning PostgreSQL for high-throughput data processing workloads, including vacuum strategies and partitioning techniques.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag">#postgres</span>
+                        <span class="tag">#performance</span>
+                        <span class="tag">#data</span>
+                    </div>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400 font-medium">Read Article →</a>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="blog-post bg-gray-50 dark:bg-gray-900 rounded-lg p-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-2">Building a Rust-Powered Data Pipeline</h3>
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <span>April 2, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>12 min read</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">How we rebuilt our critical data infrastructure using Rust to achieve better throughput, lower latency, and improved reliability.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag">#rust</span>
+                        <span class="tag">#data-engineering</span>
+                        <span class="tag">#performance</span>
+                    </div>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400 font-medium">Read Article →</a>
+                </div>
+                
+                <!-- Blog Post 3 -->
+                <div class="blog-post bg-gray-50 dark:bg-gray-900 rounded-lg p-6" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-2">Apache Iceberg: A Deep Dive</h3>
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <span>March 10, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>15 min read</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Exploring the architecture and benefits of Apache Iceberg for large-scale data lake management, with practical implementation examples.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag">#iceberg</span>
+                        <span class="tag">#data-lake</span>
+                        <span class="tag">#big-data</span>
+                    </div>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400 font-medium">Read Article →</a>
+                </div>
+                
+                <!-- Blog Post 4 -->
+                <div class="blog-post bg-gray-50 dark:bg-gray-900 rounded-lg p-6" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-2">Go vs Rust for Backend Systems</h3>
+                    <div class="flex items-center text-sm text-gray-600 dark:text-gray-400 mb-4">
+                        <span>February 18, 2025</span>
+                        <span class="mx-2">•</span>
+                        <span>10 min read</span>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">A practical comparison of Go and Rust for building backend services, with benchmarks and real-world considerations for different use cases.</p>
+                    <div class="flex flex-wrap mb-4">
+                        <span class="tag">#go</span>
+                        <span class="tag">#rust</span>
+                        <span class="tag">#backend</span>
+                    </div>
+                    <a href="#" class="text-teal-500 hover:text-teal-600 dark:hover:text-teal-400 font-medium">Read Article →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 section-contact">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold mb-12 section-header" data-aos="fade-right">Contact</h2>
+            
+            <div class="max-w-lg mx-auto text-center mb-12" data-aos="fade-up">
+                <p class="text-lg text-gray-700 dark:text-gray-300">Want to build something, collaborate, or just say hi?</p>
+            </div>
+            
+            <div class="flex justify-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex space-x-6">
+                    <a href="mailto:contact@shubhamtomar.dev" class="bg-white dark:bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/shubham-tomar" class="bg-white dark:bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/shubham-tomar" class="bg-white dark:bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/shubham_tomar" class="bg-white dark:bg-gray-800 w-14 h-14 rounded-full flex items-center justify-center shadow-md hover:shadow-lg transition-all transform hover:-translate-y-1">
+                        <svg class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723 10.035 10.035 0 01-3.127 1.195 4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.937 4.937 0 004.604 3.417 9.868 9.868 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63a9.936 9.936 0 002.46-2.548l-.047-.02z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 site-footer border-t">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">© 2025 Shubham Tomar. All rights reserved.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#home" class="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400">Home</a>
+                    <a href="#about" class="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400">About</a>
+                    <a href="#projects" class="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400">Projects</a>
+                    <a href="#blog" class="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400">Blog</a>
+                    <a href="#contact" class="text-sm text-gray-600 dark:text-gray-400 hover:text-teal-500 dark:hover:text-teal-400">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
