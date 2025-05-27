@@ -1,0 +1,68 @@
+[
+  {
+    "id": 1,
+    "title": "Personal Portfolio Website",
+    "description": "A responsive portfolio website built with vanilla JavaScript and TailwindCSS.",
+    "category": "Web",
+    "technologies": ["HTML", "CSS", "JavaScript", "TailwindCSS"],
+    "imageUrl": "assets/images/project-placeholder.jpg",
+    "demoUrl": "#",
+    "githubUrl": "https://github.com/",
+    "featured": true
+  },
+  {
+    "id": 2,
+    "title": "E-commerce Dashboard",
+    "description": "A feature-rich admin dashboard for managing online store products and orders.",
+    "category": "Web",
+    "technologies": ["React", "Node.js", "Express", "MongoDB"],
+    "imageUrl": "assets/images/project-placeholder.jpg",
+    "demoUrl": "#",
+    "githubUrl": "https://github.com/",
+    "featured": true
+  },
+  {
+    "id": 3,
+    "title": "Weather App",
+    "description": "A mobile app that provides real-time weather information and forecasts.",
+    "category": "Mobile",
+    "technologies": ["React Native", "JavaScript", "Weather API"],
+    "imageUrl": "assets/images/project-placeholder.jpg",
+    "demoUrl": "#",
+    "githubUrl": "https://github.com/",
+    "featured": true
+  },
+  {
+    "id": 4,
+    "title": "Task Management System",
+    "description": "A task and project management application with team collaboration features.",
+    "category": "Web",
+    "technologies": ["Angular", "TypeScript", "Firebase"],
+    "imageUrl": "assets/images/project-placeholder.jpg",
+    "demoUrl": "#",
+    "githubUrl": "https://github.com/",
+    "featured": false
+  },
+  {
+    "id": 5,
+    "title": "Fitness Tracker",
+    "description": "An application to track workouts, set fitness goals, and monitor progress.",
+    "category": "Mobile",
+    "technologies": ["Flutter", "Dart", "Firebase"],
+    "imageUrl": "assets/images/project-placeholder.jpg",
+    "demoUrl": "#",
+    "githubUrl": "https://github.com/",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "Data Visualization Dashboard",
+    "description": "Interactive data visualizations and analytics dashboard for business insights.",
+    "category": "Other",
+    "technologies": ["D3.js", "Vue.js", "Python", "Pandas"],
+    "imageUrl": "assets/images/project-placeholder.jpg",
+    "demoUrl": "#",
+    "githubUrl": "https://github.com/",
+    "featured": false
+  }
+]

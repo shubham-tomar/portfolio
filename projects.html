@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Shubham Tomar</title>
+    <meta name="description" content="Explore the projects and work by Shubham Tomar">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <!-- Header will be loaded dynamically -->
+    <div id="header-container"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="py-12">
+            <h1 class="text-4xl font-bold text-gray-800 dark:text-white mb-8 text-center">My Projects</h1>
+            
+            <div class="mb-8">
+                <div class="flex justify-center space-x-4 mb-8">
+                    <button class="filter-btn active bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg transition duration-300" data-filter="all">All</button>
+                    <button class="filter-btn bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded-lg transition duration-300" data-filter="web">Web</button>
+                    <button class="filter-btn bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded-lg transition duration-300" data-filter="mobile">Mobile</button>
+                    <button class="filter-btn bg-gray-200 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-gray-800 dark:text-white font-semibold py-2 px-4 rounded-lg transition duration-300" data-filter="other">Other</button>
+                </div>
+            </div>
+            
+            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be loaded dynamically -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded dynamically -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="libs/gsap.min.js" defer></script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/animation.js" type="module"></script>
+</body>
+</html>

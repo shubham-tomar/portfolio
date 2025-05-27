@@ -1,0 +1,42 @@
+[
+  {
+    "id": "blog1",
+    "title": "Getting Started with Modern JavaScript",
+    "date": "May 20, 2025",
+    "category": "Tech",
+    "summary": "Learn the fundamentals of modern JavaScript and how to use the latest features to build better web applications.",
+    "imageUrl": "assets/images/blog-placeholder.jpg",
+    "mediumUrl": "https://medium.com/",
+    "markdownFile": "blog1.md"
+  },
+  {
+    "id": "blog2",
+    "title": "Building Responsive Websites with Tailwind CSS",
+    "date": "May 10, 2025",
+    "category": "Tutorials",
+    "summary": "A step-by-step guide to creating beautiful, responsive websites using Tailwind CSS framework.",
+    "imageUrl": "assets/images/blog-placeholder.jpg",
+    "mediumUrl": "https://medium.com/",
+    "markdownFile": "blog2.md"
+  },
+  {
+    "id": "blog3",
+    "title": "The Future of Web Development in 2025",
+    "date": "April 28, 2025",
+    "category": "Insights",
+    "summary": "Exploring the emerging trends and technologies that will shape the future of web development.",
+    "imageUrl": "assets/images/blog-placeholder.jpg",
+    "mediumUrl": "https://medium.com/",
+    "markdownFile": null
+  },
+  {
+    "id": "blog4",
+    "title": "Creating 3D Animations with Three.js",
+    "date": "April 15, 2025",
+    "category": "Tutorials",
+    "summary": "A comprehensive tutorial on how to create impressive 3D animations for your web projects using Three.js.",
+    "imageUrl": "assets/images/blog-placeholder.jpg",
+    "mediumUrl": "https://medium.com/",
+    "markdownFile": null
+  }
+]

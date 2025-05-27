@@ -1,0 +1,77 @@
+/* Theme switching styles */
+
+/* Light theme (default) */
+:root {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark theme */
+.dark {
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #1f2937;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --border: #374151;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Theme transition */
+body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme-specific element styles */
+.theme-card {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+.theme-button {
+  background-color: var(--accent);
+  color: white;
+}
+
+.theme-button:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Custom element theme overrides */
+.custom-border {
+  border-color: var(--border);
+}
+
+.custom-text {
+  color: var(--text-primary);
+}
+
+.custom-text-secondary {
+  color: var(--text-secondary);
+}
+
+.custom-bg {
+  background-color: var(--bg-primary);
+}
+
+.custom-bg-secondary {
+  background-color: var(--bg-secondary);
+}
+
+/* Theme toggle button animation */
+#theme-toggle {
+  transition: transform 0.3s ease;
+}
+
+#theme-toggle:hover {
+  transform: rotate(15deg);
+}
