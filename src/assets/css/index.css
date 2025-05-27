@@ -5,9 +5,22 @@
 
 /* Light Theme (default) */
 html {
+  /* Primary colors */
   --primary: #00ADB5;
   --primary-hover: #009199;
-  --text: #2d3748;
+  
+  /* Text categories */
+  --text-primary: #2d3748; /* Main text color */
+  --text-heading: #1a202c; /* Main headings (h1, h2) */
+  --text-subheading: #4a5568; /* Subheadings (h3, h4) */
+  --text-paragraph: #2d3748; /* Regular paragraph text */
+  --text-muted: #718096; /* Muted/secondary text (dates, small notes) */
+  --text-accent: #00ADB5; /* Accented text elements */
+  
+  /* Keep legacy variable for backward compatibility */
+  --text: var(--text-primary);
+  
+  /* UI colors */
   --background: #f7fafc;
   --card-bg: #ffffff;
   --border: #e2e8f0;
@@ -20,9 +33,22 @@ html {
 
 /* Dark Theme */
 html.dark-theme {
+  /* Primary colors */
   --primary: #4FD1C5;
   --primary-hover: #38B2AC;
-  --text: #e2e8f0;
+  
+  /* Text categories */
+  --text-primary: #e2e8f0; /* Main text color */
+  --text-heading: #f7fafc; /* Main headings (h1, h2) */
+  --text-subheading: #cbd5e0; /* Subheadings (h3, h4) */
+  --text-paragraph: #e2e8f0; /* Regular paragraph text */
+  --text-muted: #a0aec0; /* Muted/secondary text (dates, small notes) */
+  --text-accent: #4FD1C5; /* Accented text elements */
+  
+  /* Keep legacy variable for backward compatibility */
+  --text: var(--text-primary);
+  
+  /* UI colors */
   --background: #1a202c;
   --card-bg: #1a202c; /* Darker background for sections */
   --border: #4a5568;
@@ -37,9 +63,35 @@ html.dark-theme {
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--background) !important;
-  color: var(--text) !important;
+  color: var(--text-paragraph) !important;
   transition: background-color var(--transition-speed), 
               color var(--transition-speed);
+}
+
+/* Typography styles using our text categories */
+h1, h2 {
+  color: var(--text-heading) !important;
+  transition: color var(--transition-speed);
+}
+
+h3, h4, h5, h6 {
+  color: var(--text-subheading) !important;
+  transition: color var(--transition-speed);
+}
+
+p {
+  color: var(--text-paragraph) !important;
+  transition: color var(--transition-speed);
+}
+
+.text-muted, small, .date, time {
+  color: var(--text-muted) !important;
+  transition: color var(--transition-speed);
+}
+
+.text-accent, .accent {
+  color: var(--text-accent) !important;
+  transition: color var(--transition-speed);
 }
 
 /* Layout containers */
