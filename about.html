@@ -12,13 +12,37 @@
         tailwind.config = {
             darkMode: 'class',
             theme: {
-                extend: {}
+                extend: {
+                    colors: {
+                        // Custom dark mode colors
+                        darkbg: '#0c0c0c',
+                        darksecondary: '#e810e8', // Using the magenta color you set
+                        darktext: '#f9fafb',
+                        darktextsecondary: '#d1d5db',
+                        darkaccent: '#3b82f6',
+                        darkborder: '#374151'
+                    }
+                }
             }
         }
     </script>
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/themes.css">
+    <!-- Custom CSS with cache busting -->
+    <link rel="stylesheet" href="css/main.css?v=1708682349">
+    <link rel="stylesheet" href="css/themes.css?v=1708682349">
+    <script>
+        // Force CSS reload on each page visit
+        function reloadStylesheets() {
+            const links = document.getElementsByTagName('link');
+            for (let i = 0; i < links.length; i++) {
+                if (links[i].rel === 'stylesheet') {
+                    const href = links[i].href.replace(/\?.*|$/, '?v=' + new Date().getTime());
+                    links[i].href = href;
+                }
+            }
+        }
+        // Reload stylesheets when page loads
+        window.addEventListener('load', reloadStylesheets);
+    </script>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
