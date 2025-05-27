@@ -17,22 +17,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const initialTheme = savedTheme || (prefersDarkScheme.matches ? 'dark' : 'light');
     
     // Apply initial theme
-    if (initialTheme === 'dark') {
-        document.documentElement.classList.add('dark-theme');
+    // The inline script in index.html already handles initial theme setting.
+    // This block ensures icons are correctly set based on the theme initially.
+    if (document.documentElement.classList.contains('dark-theme')) {
         if (sunIcon && moonIcon) {
             sunIcon.classList.remove('hidden');
             moonIcon.classList.add('hidden');
+        }
+    } else {
+        if (sunIcon && moonIcon) {
+            sunIcon.classList.add('hidden');
+            moonIcon.classList.remove('hidden');
         }
     }
     
     // Theme toggle button
     themeToggle.addEventListener('click', function() {
         // Toggle dark-theme class on the html element
-        const isDark = document.documentElement.classList.toggle('dark-theme');
+        const isDarkNow = document.documentElement.classList.toggle('dark-theme');
         
         // Update icons
         if (sunIcon && moonIcon) {
-            if (isDark) {
+            if (isDarkNow) {
                 sunIcon.classList.remove('hidden');
                 moonIcon.classList.add('hidden');
             } else {
@@ -42,8 +48,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         // Save preference to localStorage
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        console.log('Theme toggled to:', isDark ? 'dark' : 'light');
+        localStorage.setItem('theme', isDarkNow ? 'dark' : 'light');
+        console.log('Theme toggled to:', isDarkNow ? 'dark' : 'light');
     });
     
     // Mobile menu toggle
@@ -76,88 +82,17 @@ document.addEventListener('DOMContentLoaded', function() {
             const filter = this.getAttribute('data-filter');
             
             projectItems.forEach(item => {
+                // First, remove any inline display styles to let the CSS class take full control
+                item.style.display = ''; 
+
                 if (filter === 'all') {
-                    item.style.display = 'block';
+                    item.classList.remove('hidden-item');
                 } else if (item.classList.contains(filter)) {
-                    item.style.display = 'block';
+                    item.classList.remove('hidden-item');
                 } else {
-                    item.style.display = 'none';
+                    item.classList.add('hidden-item');
                 }
             });
         });
     });
-
-    // Form validation if contact form exists
-    const contactForm = document.getElementById('contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Simple validation
-            const nameInput = document.getElementById('name');
-            const emailInput = document.getElementById('email');
-            const messageInput = document.getElementById('message');
-            
-            let isValid = true;
-            
-            if (!nameInput.value.trim()) {
-                markInvalid(nameInput, 'Name is required');
-                isValid = false;
-            } else {
-                markValid(nameInput);
-            }
-            
-            if (!emailInput.value.trim()) {
-                markInvalid(emailInput, 'Email is required');
-                isValid = false;
-            } else if (!isValidEmail(emailInput.value)) {
-                markInvalid(emailInput, 'Please enter a valid email');
-                isValid = false;
-            } else {
-                markValid(emailInput);
-            }
-            
-            if (!messageInput.value.trim()) {
-                markInvalid(messageInput, 'Message is required');
-                isValid = false;
-            } else {
-                markValid(messageInput);
-            }
-            
-            if (isValid) {
-                // In a real app, you would submit the form data to a server
-                // For now, just show a success message
-                contactForm.reset();
-                const successMessage = document.getElementById('form-success');
-                if (successMessage) {
-                    successMessage.classList.remove('hidden');
-                    setTimeout(() => {
-                        successMessage.classList.add('hidden');
-                    }, 5000);
-                }
-            }
-        });
-    }
-    
-    // Helper functions for form validation
-    function markInvalid(input, message) {
-        input.classList.add('border-red-500');
-        const errorElement = input.nextElementSibling;
-        if (errorElement && errorElement.classList.contains('error-message')) {
-            errorElement.textContent = message;
-            errorElement.classList.remove('hidden');
-        }
-    }
-    
-    function markValid(input) {
-        input.classList.remove('border-red-500');
-        const errorElement = input.nextElementSibling;
-        if (errorElement && errorElement.classList.contains('error-message')) {
-            errorElement.classList.add('hidden');
-        }
-    }
-    
-    function isValidEmail(email) {
-        const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(String(email).toLowerCase());
-    }
 });

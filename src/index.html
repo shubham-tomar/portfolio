@@ -12,9 +12,11 @@
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
         const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
         if (currentTheme === 'dark') {
-            document.documentElement.classList.add('dark');
+            document.documentElement.classList.add('dark-theme');
         } else {
-            document.documentElement.classList.remove('dark');
+            // No need to explicitly remove 'dark-theme' if it's not added by default.
+            // Ensuring no 'dark' class is present if it was the old name.
+            document.documentElement.classList.remove('dark'); 
         }
     </script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
