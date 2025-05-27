@@ -7,6 +7,15 @@
     <meta name="description" content="Explore the projects and work by Shubham Tomar">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/themes.css">
@@ -40,7 +49,23 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="libs/gsap.min.js" defer></script>
+    <script>
+        // Check if libs directory exists before loading GSAP
+        fetch('libs/gsap.min.js')
+            .then(response => {
+                if (!response.ok) {
+                    console.warn('GSAP library not found. Animations will be disabled.');
+                } else {
+                    // Create and load GSAP script dynamically if it exists
+                    const script = document.createElement('script');
+                    script.src = 'libs/gsap.min.js';
+                    document.body.appendChild(script);
+                }
+            })
+            .catch(error => {
+                console.warn('Error checking for GSAP library:', error);
+            });
+    </script>
     <script src="js/main.js" type="module"></script>
     <script src="js/animation.js" type="module"></script>
 </body>

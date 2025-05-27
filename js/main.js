@@ -3,47 +3,107 @@ import { initNavigation } from './nav.js';
 import { initializeAnimations } from './animation.js';
 
 // DOM Content Loaded Event Listener
-document.addEventListener('DOMContentLoaded', async () => {
-    // Load header and footer components
-    await loadComponent('header-container', 'components/header.html');
-    await loadComponent('footer-container', 'components/footer.html');
-    
-    // Initialize navigation
-    initNavigation();
-    
-    // Initialize theme
-    initTheme();
-    
-    // Set current year in footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Initialize animations
-    initializeAnimations();
-    
-    // Page-specific initializations
-    initCurrentPage();
+document.addEventListener('DOMContentLoaded', initApp);
+
+// Handle page visibility changes (tab switching)
+document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') {
+        // Page is visible again, check if components are loaded
+        const header = document.getElementById('header-container');
+        const footer = document.getElementById('footer-container');
+        
+        if (header && !header.children.length) {
+            console.log('Header component missing after tab switch, reloading components');
+            initApp();
+        }
+    }
 });
+
+// Initialize the application
+async function initApp() {
+    try {
+        console.log('Initializing application...');
+        
+        // Load header component first
+        const headerLoaded = await loadComponent('header-container', 'components/header.html');
+        
+        // Initialize theme AFTER header is loaded
+        if (headerLoaded) {
+            initTheme();
+        }
+        
+        // Load footer component
+        const footerLoaded = await loadComponent('footer-container', 'components/footer.html');
+        
+        // Initialize navigation
+        initNavigation();
+        
+        // Set current year in footer
+        if (footerLoaded) {
+            const yearElement = document.getElementById('current-year');
+            if (yearElement) {
+                yearElement.textContent = new Date().getFullYear();
+            }
+        }
+        
+        // Check if GSAP is available before initializing animations
+        if (typeof gsap !== 'undefined') {
+            // Initialize animations
+            initializeAnimations();
+        } else {
+            console.warn('GSAP library not loaded. Animations will not work.');
+        }
+        
+        // Page-specific initializations
+        initCurrentPage();
+        
+        console.log('Application initialized successfully');
+    } catch (error) {
+        console.error('Error initializing application:', error);
+    }
+}
 
 /**
  * Load a component into a container
  * @param {string} containerId - The ID of the container element
  * @param {string} componentPath - The path to the component HTML file
- * @returns {Promise} - A promise that resolves when the component is loaded
+ * @returns {Promise<boolean>} - A promise that resolves when the component is loaded
  */
 async function loadComponent(containerId, componentPath) {
     try {
+        // Find container element
         const container = document.getElementById(containerId);
-        if (!container) return;
+        if (!container) {
+            console.error(`Container with ID '${containerId}' not found`);
+            return false;
+        }
         
-        const response = await fetch(componentPath);
-        if (!response.ok) throw new Error(`Failed to load ${componentPath}`);
+        // Check if container already has content
+        if (container.children.length > 0) {
+            console.log(`Container '${containerId}' already has content, skipping load`);
+            return true;
+        }
+        
+        // Fetch component HTML with cache busting to prevent stale content
+        const cacheBuster = `?_=${Date.now()}`;
+        const response = await fetch(`${componentPath}${cacheBuster}`);
+        
+        if (!response.ok) {
+            throw new Error(`Failed to load ${componentPath}: ${response.status} ${response.statusText}`);
+        }
         
         const html = await response.text();
+        if (!html.trim()) {
+            throw new Error(`Empty content loaded from ${componentPath}`);
+        }
+        
+        // Insert component HTML
         container.innerHTML = html;
+        console.log(`Successfully loaded component into '${containerId}'`);
         
         return true;
     } catch (error) {
-        console.error('Error loading component:', error);
+        console.error(`Error loading component '${componentPath}' into '${containerId}':`, error);
         return false;
     }
 }
@@ -55,6 +115,12 @@ function initTheme() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     const darkIcon = document.getElementById('theme-toggle-dark-icon');
     const lightIcon = document.getElementById('theme-toggle-light-icon');
+    
+    // Check if elements exist
+    if (!themeToggleBtn || !darkIcon || !lightIcon) {
+        console.error('Theme toggle elements not found');
+        return;
+    }
     
     // Check for saved theme preference or use prefer-color-scheme
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -79,20 +145,34 @@ function initTheme() {
  * Toggle between light and dark themes
  */
 function toggleTheme() {
+    // Get toggle icons
     const darkIcon = document.getElementById('theme-toggle-dark-icon');
     const lightIcon = document.getElementById('theme-toggle-light-icon');
     
+    if (!darkIcon || !lightIcon) {
+        console.error('Theme toggle icons not found');
+        return;
+    }
+    
+    // Check current theme
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    console.log('Current theme mode:', isDarkMode ? 'dark' : 'light');
+    
     // Toggle theme class
-    if (document.documentElement.classList.contains('dark')) {
+    if (isDarkMode) {
+        // Switch to light mode
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
         lightIcon.classList.add('hidden');
         darkIcon.classList.remove('hidden');
+        console.log('Theme switched to light mode');
     } else {
+        // Switch to dark mode
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
         darkIcon.classList.add('hidden');
         lightIcon.classList.remove('hidden');
+        console.log('Theme switched to dark mode');
     }
 }
 

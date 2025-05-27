@@ -7,6 +7,15 @@
     <meta name="description" content="Read articles and blog posts by Shubham Tomar">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Tailwind Configuration
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {}
+            }
+        }
+    </script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/themes.css">
@@ -40,8 +49,37 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script src="libs/gsap.min.js" defer></script>
-    <script src="libs/showdown.min.js" defer></script>
+    <script>
+        // Check if libs directory exists before loading libraries
+        function loadLibrary(path) {
+            return fetch(path)
+                .then(response => {
+                    if (!response.ok) {
+                        console.warn(`Library ${path} not found.`);
+                        return false;
+                    } else {
+                        // Create and load script dynamically if it exists
+                        const script = document.createElement('script');
+                        script.src = path;
+                        document.body.appendChild(script);
+                        return true;
+                    }
+                })
+                .catch(error => {
+                    console.warn(`Error checking for library ${path}:`, error);
+                    return false;
+                });
+        }
+        
+        // Load required libraries
+        loadLibrary('libs/gsap.min.js')
+            .then(() => console.log('GSAP loaded or not available'));
+            
+        loadLibrary('libs/showdown.min.js')
+            .then(loaded => {
+                if (!loaded) console.warn('Markdown rendering will not work without Showdown library');
+            });
+    </script>
     <script src="js/main.js" type="module"></script>
     <script src="js/animation.js" type="module"></script>
     <script src="js/markdown-renderer.js" type="module"></script>
