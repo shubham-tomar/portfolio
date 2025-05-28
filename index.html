@@ -31,17 +31,17 @@
     <link rel="stylesheet" href="css/themes.css?v=1708682349">
     <script>
         // Force CSS reload on each page visit
-        function reloadStylesheets() {
-            const links = document.getElementsByTagName('link');
-            for (let i = 0; i < links.length; i++) {
-                if (links[i].rel === 'stylesheet') {
-                    const href = links[i].href.replace(/\?.*|$/, '?v=' + new Date().getTime());
-                    links[i].href = href;
-                }
-            }
-        }
+        // function reloadStylesheets() {
+        //     const links = document.getElementsByTagName('link');
+        //     for (let i = 0; i < links.length; i++) {
+        //         if (links[i].rel === 'stylesheet') {
+        //             const href = links[i].href.replace(/\?.*|$/, '?v=' + new Date().getTime());
+        //             links[i].href = href;
+        //         }
+        //     }
+        // }
         // Reload stylesheets when page loads
-        window.addEventListener('load', reloadStylesheets);
+        // window.addEventListener('load', reloadStylesheets);
     </script>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">

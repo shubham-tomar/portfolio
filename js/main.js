@@ -79,10 +79,14 @@ async function loadComponent(containerId, componentPath) {
         }
         
         // Check if container already has content
-        if (container.children.length > 0) {
-            console.log(`Container '${containerId}' already has content, skipping load`);
-            return true;
-        }
+        // if (container.children.length > 0) {
+        //     console.log(`Container '${containerId}' already has content, skipping load`);
+        //     return true;
+        // }
+        
+        // Clear any existing content in the container
+        console.log(`Clearing content of container '${containerId}'`);
+        container.innerHTML = '';
         
         // Fetch component HTML with cache busting to prevent stale content
         const cacheBuster = `?_=${Date.now()}`;
@@ -99,7 +103,7 @@ async function loadComponent(containerId, componentPath) {
         
         // Insert component HTML
         container.innerHTML = html;
-        console.log(`Successfully loaded component into '${containerId}'`);
+        console.log(`Successfully loaded component into '${containerId}', after clearing existing content`);
         
         return true;
     } catch (error) {
