@@ -4,6 +4,8 @@
 :root {
   --bg-primary: #f9fafb;
   --bg-secondary: #ffffff;
+  --container-bg: #f3f4f6;
+  --header-bg: #f9fafb;
   --text-primary: #1f2937;
   --text-secondary: #4b5563;
   --accent: #2563eb;
@@ -15,7 +17,9 @@
 /* Dark theme */
 .dark {
   --bg-primary: #0c0c0c;
-  --bg-secondary: #8880e8; /* Your custom purple color */
+  --bg-secondary: #1f2937;
+  --container-bg: #374151;
+  --header-bg: #0c0c0c;
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
   --accent: #3b82f6;
@@ -39,6 +43,14 @@ body {
   background-color: var(--bg-secondary);
 }
 
+.bg-custom-container {
+  background-color: var(--container-bg);
+}
+
+.bg-custom-header {
+  background-color: var(--header-bg);
+}
+
 .text-custom-primary {
   color: var(--text-primary);
 }
@@ -47,8 +59,27 @@ body {
   color: var(--text-secondary);
 }
 
+.text-accent {
+  color: var(--accent);
+}
+
+.hover\:text-accent:hover {
+  color: var(--accent);
+}
+
+.hover\:text-accent-hover:hover {
+  color: var(--accent-hover);
+}
+
 .border-custom {
   border-color: var(--border);
+}
+
+/* Special styling for header container */
+header .container {
+  background-color: var(--container-bg);
+  border: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Theme transition */
