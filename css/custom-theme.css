@@ -1,0 +1,59 @@
+/* Custom theme variables for light and dark modes */
+
+/* Light theme (default) */
+:root {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border: #e5e7eb;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark theme */
+.dark {
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #8880e8; /* Your custom purple color */
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --border: #374151;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+/* Apply CSS variables to elements */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.bg-custom-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-custom-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.text-custom-primary {
+  color: var(--text-primary);
+}
+
+.text-custom-secondary {
+  color: var(--text-secondary);
+}
+
+.border-custom {
+  border-color: var(--border);
+}
+
+/* Theme transition */
+body, a, button, div {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
+}

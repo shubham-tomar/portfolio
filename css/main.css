@@ -1,4 +1,5 @@
 /* Main CSS Styles */
+@import "tailwindcss";
 
 /* Custom animations */
 .fade-in {

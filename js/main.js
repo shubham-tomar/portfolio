@@ -135,49 +135,66 @@ function initTheme() {
         document.documentElement.classList.add('dark');
         darkIcon.classList.add('hidden');
         lightIcon.classList.remove('hidden');
+        console.log('Dark mode applied');
     } else {
         document.documentElement.classList.remove('dark');
         lightIcon.classList.add('hidden');
         darkIcon.classList.remove('hidden');
+        console.log('Light mode applied');
     }
     
     // Theme toggle button click handler
     themeToggleBtn.addEventListener('click', toggleTheme);
+    
+    // Log the current state for debugging
+    console.log('Theme initialized, current class list:', document.documentElement.classList);
 }
 
 /**
  * Toggle between light and dark themes
  */
 function toggleTheme() {
-    // Get toggle icons
     const darkIcon = document.getElementById('theme-toggle-dark-icon');
     const lightIcon = document.getElementById('theme-toggle-light-icon');
     
+    // Check if elements exist
     if (!darkIcon || !lightIcon) {
         console.error('Theme toggle icons not found');
         return;
     }
     
-    // Check current theme
-    const isDarkMode = document.documentElement.classList.contains('dark');
-    console.log('Current theme mode:', isDarkMode ? 'dark' : 'light');
+    console.log('Toggle theme clicked. Current state:', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
     
-    // Toggle theme class
+    // Get the current theme from localStorage or default to system preference
+    const currentTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDarkMode = currentTheme === 'dark' || (!currentTheme && prefersDark);
+    
     if (isDarkMode) {
-        // Switch to light mode
+        // Switch to light theme
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
-        lightIcon.classList.add('hidden');
+        
+        // Show dark icon (indicating ability to switch to dark)
         darkIcon.classList.remove('hidden');
-        console.log('Theme switched to light mode');
+        lightIcon.classList.add('hidden');
+        console.log('Switched to light theme');
     } else {
-        // Switch to dark mode
+        // Switch to dark theme
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
-        darkIcon.classList.add('hidden');
+        
+        // Show light icon (indicating ability to switch to light)
         lightIcon.classList.remove('hidden');
-        console.log('Theme switched to dark mode');
+        darkIcon.classList.add('hidden');
+        console.log('Switched to dark theme');
     }
+    
+    // Force a CSS variable update by adding and removing a class
+    document.body.classList.add('theme-toggled');
+    setTimeout(() => {
+        document.body.classList.remove('theme-toggled');
+    }, 10);
 }
 
 /**

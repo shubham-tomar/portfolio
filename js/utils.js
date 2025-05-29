@@ -19,30 +19,12 @@ export function reloadStylesheets() {
 
 /**
  * Initializes Tailwind CSS dark mode configuration
- * Sets up custom colors and other theme extensions
+ * When using Tailwind CLI, configuration is now in tailwind.config.js
  */
 export function initTailwindConfig() {
-    if (typeof tailwind !== 'undefined') {
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        // Custom dark mode colors
-                        darkbg: '#0c0c0c',
-                        darksecondary: '#8880e8',
-                        darktext: '#f9fafb',
-                        darktextsecondary: '#d1d5db',
-                        darkaccent: '#3b82f6',
-                        darkborder: '#374151'
-                    }
-                }
-            }
-        };
-        console.log('Tailwind configuration initialized');
-    } else {
-        console.warn('Tailwind not loaded, skipping configuration');
-    }
+    // Tailwind configuration is now handled by tailwind.config.js
+    // This function is kept for backward compatibility
+    console.log('Using compiled Tailwind CSS with configuration from tailwind.config.js');
 }
 
 /**

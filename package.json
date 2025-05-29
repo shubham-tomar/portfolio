@@ -1,0 +1,50 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "A modern, responsive portfolio website built with vanilla JavaScript and Tailwind CSS. This project features a clean separation of concerns, modular JavaScript architecture, and support for animations and 3D effects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./css/main.css -o ./css/main-output.css && tailwindcss -i ./css/themes.css -o ./css/themes-output.css",
+    "watch:css": "tailwindcss -i ./css/main.css -o ./css/main-output.css --watch & tailwindcss -i ./css/themes.css -o ./css/themes-output.css --watch",
+    "dev": "npm run watch:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubham-tomar/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shubham-tomar/portfolio/issues"
+  },
+  "homepage": "https://github.com/shubham-tomar/portfolio#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.4",
+    "tailwindcss": "^4.1.8",
+    "vite": "^6.3.5"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.8",
+    "@tailwindcss/vite": "^4.1.8",
+    "browserslist": "^4.25.0",
+    "caniuse-lite": "^1.0.30001720",
+    "electron-to-chromium": "^1.5.161",
+    "esbuild": "^0.25.5",
+    "escalade": "^3.2.0",
+    "fdir": "^6.4.5",
+    "fraction.js": "^4.3.7",
+    "nanoid": "^3.3.11",
+    "node-releases": "^2.0.19",
+    "normalize-range": "^0.1.2",
+    "picocolors": "^1.1.1",
+    "picomatch": "^4.0.2",
+    "postcss-value-parser": "^4.2.0",
+    "rollup": "^4.41.1",
+    "source-map-js": "^1.2.1",
+    "tinyglobby": "^0.2.14",
+    "update-browserslist-db": "^1.1.3"
+  }
+}

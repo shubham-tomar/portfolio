@@ -1,5 +1,5 @@
 /* Theme switching styles */
-
+@import "tailwindcss";
 /* Light theme (default) */
 :root {
   --bg-primary: #f9fafb;
