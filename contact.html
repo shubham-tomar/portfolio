@@ -7,32 +7,12 @@
     <meta name="description" content="Get in touch with Shubham Tomar">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind Configuration
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    <!-- Utils JS for common functions -->
+    <script src="js/utils.js" type="module"></script>
     <!-- Custom CSS with cache busting -->
     <link rel="stylesheet" href="css/main.css?v=1708682349">
     <link rel="stylesheet" href="css/themes.css?v=1708682349">
-    <script>
-        // Force CSS reload on each page visit
-        function reloadStylesheets() {
-            const links = document.getElementsByTagName('link');
-            for (let i = 0; i < links.length; i++) {
-                if (links[i].rel === 'stylesheet') {
-                    const href = links[i].href.replace(/\?.*|$/, '?v=' + new Date().getTime());
-                    links[i].href = href;
-                }
-            }
-        }
-        // Reload stylesheets when page loads
-        window.addEventListener('load', reloadStylesheets);
-    </script>
+    <!-- CSS cache busting handled by utils.js -->
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>

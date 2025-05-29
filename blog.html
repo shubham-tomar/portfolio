@@ -7,32 +7,12 @@
     <meta name="description" content="Read articles and blog posts by Shubham Tomar">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Tailwind Configuration
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {}
-            }
-        }
-    </script>
+    <!-- Utils JS for common functions -->
+    <script src="js/utils.js" type="module"></script>
     <!-- Custom CSS with cache busting -->
     <link rel="stylesheet" href="css/main.css?v=1708682349">
     <link rel="stylesheet" href="css/themes.css?v=1708682349">
-    <script>
-        // Force CSS reload on each page visit
-        function reloadStylesheets() {
-            const links = document.getElementsByTagName('link');
-            for (let i = 0; i < links.length; i++) {
-                if (links[i].rel === 'stylesheet') {
-                    const href = links[i].href.replace(/\?.*|$/, '?v=' + new Date().getTime());
-                    links[i].href = href;
-                }
-            }
-        }
-        // Reload stylesheets when page loads
-        window.addEventListener('load', reloadStylesheets);
-    </script>
+    <!-- CSS cache busting handled by utils.js -->
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
@@ -63,37 +43,7 @@
     <div id="footer-container"></div>
 
     <!-- Scripts -->
-    <script>
-        // Check if libs directory exists before loading libraries
-        function loadLibrary(path) {
-            return fetch(path)
-                .then(response => {
-                    if (!response.ok) {
-                        console.warn(`Library ${path} not found.`);
-                        return false;
-                    } else {
-                        // Create and load script dynamically if it exists
-                        const script = document.createElement('script');
-                        script.src = path;
-                        document.body.appendChild(script);
-                        return true;
-                    }
-                })
-                .catch(error => {
-                    console.warn(`Error checking for library ${path}:`, error);
-                    return false;
-                });
-        }
-        
-        // Load required libraries
-        loadLibrary('libs/gsap.min.js')
-            .then(() => console.log('GSAP loaded or not available'));
-            
-        loadLibrary('libs/showdown.min.js')
-            .then(loaded => {
-                if (!loaded) console.warn('Markdown rendering will not work without Showdown library');
-            });
-    </script>
+    <!-- Library loading handled by utils.js -->
     <script src="js/main.js" type="module"></script>
     <script src="js/animation.js" type="module"></script>
     <script src="js/markdown-renderer.js" type="module"></script>
