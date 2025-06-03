@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:css": "tailwindcss -i ./css/main.css -o ./css/main-output.css && tailwindcss -i ./css/themes.css -o ./css/themes-output.css",
     "watch:css": "tailwindcss -i ./css/main.css -o ./css/main-output.css --watch & tailwindcss -i ./css/themes.css -o ./css/themes-output.css --watch",
-    "dev": "npm run watch:css"
+    "dev": "npm run watch:css",
+    "serve": "vite --open"
   },
   "repository": {
     "type": "git",

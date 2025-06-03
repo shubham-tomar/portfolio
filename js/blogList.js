@@ -12,6 +12,7 @@ let blogPosts = [];
  * Initialize blog list functionality
  */
 export async function initBlogList() {
+    console.log('Initializing blog list...');
     // Load blog posts data
     await loadBlogPosts();
     
@@ -27,18 +28,22 @@ export async function initBlogList() {
  */
 async function loadBlogPosts() {
     try {
-        const response = await fetch('data/blogList.json');
+        console.log('Fetching blog posts data...');
+        // Use absolute path to ensure correct loading
+        const response = await fetch('/data/blogList.json');
         
         if (!response.ok) {
             throw new Error(`Failed to load blog data: ${response.status} ${response.statusText}`);
         }
         
         blogPosts = await response.json();
+        console.log('Successfully loaded blog posts:', blogPosts);
         return true;
     } catch (error) {
         console.error('Error loading blog posts:', error);
         
         // Fallback to sample data if JSON file couldn't be loaded
+        console.log('Using fallback sample blog posts');
         blogPosts = getSampleBlogPosts();
         return false;
     }
@@ -50,7 +55,12 @@ async function loadBlogPosts() {
  */
 function renderBlogPosts(posts = null) {
     const blogContainer = document.getElementById('blog-container');
-    if (!blogContainer) return;
+    if (!blogContainer) {
+        console.error('Blog container not found');
+        return;
+    }
+    
+    console.log('Rendering blog posts...');
     
     // Clear container
     blogContainer.innerHTML = '';
@@ -58,7 +68,9 @@ function renderBlogPosts(posts = null) {
     // Use provided posts or all posts
     const postsToRender = posts || blogPosts;
     
-    if (postsToRender.length === 0) {
+    console.log('Posts to render:', postsToRender);
+    
+    if (!postsToRender || postsToRender.length === 0) {
         blogContainer.innerHTML = `
             <div class="col-span-full text-center py-8">
                 <p class="text-gray-600 dark:text-gray-400">No blog posts found.</p>
@@ -67,59 +79,28 @@ function renderBlogPosts(posts = null) {
         return;
     }
     
-    // Load blog card template
-    fetch('components/blogCard.html')
-        .then(response => response.text())
-        .then(template => {
-            // Render each blog post using the template
-            postsToRender.forEach(post => {
-                const blogCardHtml = template
-                    .replace('{{imageUrl}}', post.imageUrl || 'assets/images/blog-placeholder.jpg')
-                    .replace('{{title}}', post.title)
-                    .replace('{{date}}', post.date)
-                    .replace('{{category}}', post.category)
-                    .replace('{{summary}}', post.summary)
-                    .replace('{{mediumUrl}}', post.mediumUrl);
-                
-                // Create element from HTML
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = blogCardHtml;
-                const blogCard = tempDiv.firstChild;
-                
-                // Add category as data attribute for filtering
-                blogCard.dataset.category = post.category.toLowerCase();
-                
-                // Add to container
-                blogContainer.appendChild(blogCard);
-            });
-        })
-        .catch(error => {
-            console.error('Error loading blog card template:', error);
-            
-            // Fallback rendering without template
-            postsToRender.forEach(post => {
-                const blogCard = document.createElement('div');
-                blogCard.className = 'blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg';
-                blogCard.dataset.category = post.category.toLowerCase();
-                
-                blogCard.innerHTML = `
-                    <div class="relative">
-                        <img class="w-full h-48 object-cover" src="${post.imageUrl || 'assets/images/blog-placeholder.jpg'}" alt="${post.title}">
-                        <div class="absolute top-0 right-0 bg-blue-600 text-white text-sm font-semibold py-1 px-3 rounded-bl-lg">
-                            ${post.category}
-                        </div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">${post.title}</h3>
-                        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">${post.date}</p>
-                        <p class="text-gray-700 dark:text-gray-300 mb-4">${post.summary}</p>
-                        <a href="${post.mediumUrl}" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">Read More →</a>
-                    </div>
-                `;
-                
-                blogContainer.appendChild(blogCard);
-            });
-        });
+    // Directly render blog posts without template
+    postsToRender.forEach(post => {
+        const blogCard = document.createElement('div');
+        blogCard.className = 'blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300';
+        
+        blogCard.innerHTML = `
+            <div class="relative">
+                <img class="blog-image w-full h-48 object-cover" src="${post.imageUrl}" alt="${post.title}">
+                <div class="absolute top-0 right-0 bg-blue-600 text-white text-sm font-semibold py-1 px-3 rounded-bl-lg">
+                    ${post.category}
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">${post.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">${post.date}</p>
+                <p class="text-gray-700 dark:text-gray-300 mb-4">${post.summary}</p>
+                <a href="${post.mediumUrl}" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">Read More →</a>
+            </div>
+        `;
+        
+        blogContainer.appendChild(blogCard);
+    });
 }
 
 /**
@@ -127,30 +108,33 @@ function renderBlogPosts(posts = null) {
  */
 function initBlogFilters() {
     const filterButtons = document.querySelectorAll('.filter-btn');
+    
     if (!filterButtons.length) return;
+    
+    console.log('Initializing blog filters with', filterButtons.length, 'buttons');
     
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             // Remove active class from all buttons
             filterButtons.forEach(btn => {
-                btn.classList.remove('active', 'bg-blue-600', 'text-white');
-                btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-800', 'dark:text-white');
+                btn.classList.remove('active', 'bg-accent', 'text-white');
+                btn.classList.add('bg-custom-secondary', 'text-custom-primary', 'border', 'border-custom');
             });
             
             // Add active class to clicked button
-            button.classList.add('active', 'bg-blue-600', 'text-white');
-            button.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-800', 'dark:text-white');
+            button.classList.add('active', 'bg-accent', 'text-white');
+            button.classList.remove('bg-custom-secondary', 'text-custom-primary', 'border', 'border-custom');
             
-            // Get filter value
-            const filter = button.dataset.filter;
+            const filter = button.getAttribute('data-filter');
+            console.log('Filtering blogs by:', filter);
             
-            // Filter posts
             if (filter === 'all') {
                 renderBlogPosts();
             } else {
                 const filteredPosts = blogPosts.filter(post => {
-                    return post.category.toLowerCase() === filter;
+                    return post.category.toLowerCase() === filter.toLowerCase();
                 });
+                
                 renderBlogPosts(filteredPosts);
             }
         });

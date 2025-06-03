@@ -253,14 +253,13 @@ function initHomePage() {
 function initAboutPage() {
     // Load skills
     const skills = [
-        { name: 'JavaScript', level: 90 },
-        { name: 'HTML/CSS', level: 85 },
-        { name: 'React', level: 80 },
-        { name: 'Node.js', level: 75 },
-        { name: 'Python', level: 70 },
-        { name: 'Go', level: 65 },
-        { name: 'SQL', level: 80 },
-        { name: 'GraphQL', level: 70 }
+        { name: 'Data Engineering', level: 95 },
+        { name: 'Databases Internals', level: 90 },
+        { name: 'Data Warehousing', level: 90 },
+        { name: 'ETL', level: 85 },
+        { name: 'Real-time Data Processing', level: 80 },
+        { name: 'Building Microservices', level: 75 },
+        { name: 'Data LakeHouse', level: 80 }
     ];
     
     const skillsContainer = document.getElementById('skills-container');
@@ -284,22 +283,22 @@ function initAboutPage() {
     // Load experience
     const experiences = [
         {
-            title: 'Senior Software Engineer',
-            company: 'Example Tech',
-            period: '2022 - Present',
-            description: 'Leading development of web applications using modern JavaScript frameworks.'
+            title: 'Senior Data Engineer',
+            company: 'Pixis.ai',
+            period: 'Jan 2025 - Present',
+            description: 'Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks.'
+        },
+        {
+            title: 'Data Engineer',
+            company: 'Juspay Technologies',
+            period: 'Dec 2020 - Dec 2024',
+            description: 'Developed in house data platform to handle batch as well as real-time data processing using Kafka, cassandra, Clickhouse, and other modern data engineering tools and frameworks.'
         },
         {
             title: 'Software Engineer',
-            company: 'Tech Solutions',
-            period: '2020 - 2022',
-            description: 'Developed and maintained full-stack web applications.'
-        },
-        {
-            title: 'Junior Developer',
-            company: 'StartUp Inc',
-            period: '2018 - 2020',
-            description: 'Contributed to frontend development using React and responsive design.'
+            company: 'BTM Financial',
+            period: 'Sep 2019 - Dec 2020',
+            description: 'Worked with various international clients to build and maintain their applications using modern tools and frameworks.'
         }
     ];
     
@@ -320,16 +319,10 @@ function initAboutPage() {
     // Load education
     const education = [
         {
-            degree: 'Master of Computer Science',
-            school: 'Example University',
-            period: '2016 - 2018',
-            description: 'Specialized in Software Engineering and Distributed Systems.'
-        },
-        {
-            degree: 'Bachelor of Engineering',
-            school: 'Technical University',
-            period: '2012 - 2016',
-            description: 'Major in Computer Science with focus on software development.'
+            degree: 'Bachelor of Computer Science (Specialization in Data Engineering)',
+            school: 'GLA University, Mathura',
+            period: '2016 - 2020',
+            description: 'Specialized in Data Engineering and Data Warehousing.'
         }
     ];
     
