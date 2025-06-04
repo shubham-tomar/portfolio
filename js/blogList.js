@@ -238,12 +238,12 @@ export function loadRecentBlogPosts(limit = 2) {
                 // Render each recent post
                 recentPosts.forEach(post => {
                     const blogCardHtml = template
-                        .replace('{{imageUrl}}', post.imageUrl || 'assets/images/blog-placeholder.jpg')
-                        .replace('{{title}}', post.title)
-                        .replace('{{date}}', post.date)
-                        .replace('{{category}}', post.category)
-                        .replace('{{summary}}', post.summary)
-                        .replace('{{mediumUrl}}', post.mediumUrl);
+                        .replace(/{{imageUrl}}/g, post.imageUrl || 'assets/images/blog-placeholder.jpg')
+                        .replace(/{{title}}/g, post.title)
+                        .replace(/{{date}}/g, post.date)
+                        .replace(/{{category}}/g, post.category)
+                        .replace(/{{summary}}/g, post.summary)
+                        .replace(/{{mediumUrl}}/g, post.mediumUrl);
                     
                     // Add to container
                     blogsContainer.innerHTML += blogCardHtml;
