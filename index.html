@@ -3,7 +3,11 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Shubham Tomar | Portfolio</title>
     <meta name="description" content="Portfolio website of Shubham Tomar - Software Engineer and Developer">
     <script src="js/utils.js" type="module"></script>
@@ -19,80 +23,71 @@
 
     <main class="container mx-auto px-4 py-8">
         <section id="hero" class="py-16">
-            <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-                <div class="md:w-1/2 text-left">
-                    <h1 class="text-5xl font-bold text-custom-primary mb-4">Hi, I'm Shubham Tomar</h1>
-                    <p class="text-xl text-custom-secondary">Software Engineer & Developer specializing in building
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 px-4 sm:px-6">
+                <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-custom-primary mb-4 leading-tight">Hi,
+                        I'm Shubham Tomar</h1>
+                    <p class="text-lg sm:text-xl text-custom-secondary">Software Engineer & Developer specializing in
+                        building
                         scalable and efficient applications.</p>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <div class="relative w-136 h-136 flex items-center justify-center">
-                        <!-- Decorative semi-circles -->
-                        <div class="absolute inset-0 w-full h-full">
-                            <svg viewBox="0 0 100 100" class="w-full h-full">
-                                <!-- Right semi-circle -->
-                                <path d="M 50,5 A 45,45 0 0,1 50,95" stroke="var(--accent)" stroke-width="0.8"
-                                    fill="none" />
-                            </svg>
-                        </div>
-                        <!-- Profile Image Container with Arc Icons -->
-                        <div class="relative w-112 h-112 z-10">
-                            <!-- Profile Image -->
+                <div class="w-full lg:w-1/2 flex justify-center">
+                    <div
+                        class="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 flex items-center justify-center">
+                        <!-- Profile Image -->
+                        <div class="relative w-full h-full max-w-xs max-h-xs z-10">
                             <div
                                 class="w-full h-full rounded-full bg-custom-secondary border-4 border-custom flex items-center justify-center overflow-hidden">
                                 <img src="assets/images/dp-3.jpg" alt="Profile Image"
                                     class="w-full h-full object-cover">
                             </div>
+                        </div>
 
-                            <!-- Social Media Icons Arc -->
-                            <div
-                                class="absolute top-1/2 left-1/2 w-112 h-112 -translate-x-1/2 -translate-y-1/2 z-20 pointer-events-none">
-                                <!-- GitHub (--i: 0 = top) -->
+                        <!-- Social Media Icons -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="relative w-full h-full max-w-xs max-h-xs">
+                                <!-- GitHub -->
                                 <a href="https://github.com/shubham-tomar" target="_blank" rel="noopener noreferrer"
-                                    class="absolute bg-custom-secondary p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out pointer-events-auto"
-                                    style="transform: rotate(0deg) translateY(45px) translateX(-15px) rotate(0deg);"
-                                    onmouseover="this.style.transform='rotate(0deg) translateY(35px) translateX(-15px) rotate(0deg)'"
-                                    onmouseout="this.style.transform='rotate(0deg) translateY(45px) translateX(-15px) rotate(0deg)'">
-                                    <svg class="w-5 h-5 text-custom-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    class="absolute bg-custom-secondary p-2 sm:p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out"
+                                    style="top: 0; left: 50%; transform: translate(-326%, -20%);">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-custom-primary" fill="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path
                                             d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                                     </svg>
                                 </a>
 
-                                <!-- LinkedIn (--i: 1 = right) -->
+                                <!-- LinkedIn -->
                                 <a href="https://linkedin.com/in/shubham-tomar-cs" target="_blank"
                                     rel="noopener noreferrer"
-                                    class="absolute bg-custom-secondary p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out pointer-events-auto"
-                                    style="transform: rotate(90deg) translateY(65px) translateX(155px) rotate(-90deg);"
-                                    onmouseover="this.style.transform='rotate(90deg) translateY(65px) translateX(145px) rotate(-90deg)'"
-                                    onmouseout="this.style.transform='rotate(90deg) translateY(65px) translateX(155px) rotate(-90deg)'">
-                                    <svg class="w-5 h-5 text-custom-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    class="absolute bg-custom-secondary p-2 sm:p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out"
+                                    style="top: 50%; left: 0; transform: translate(-112%, 67%);">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-custom-primary" fill="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path
                                             d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
                                     </svg>
                                 </a>
 
-                                <!-- Instagram (--i: 2 = bottom) -->
+                                <!-- Instagram -->
                                 <a href="https://www.instagram.com/shubham._tomar/" target="_blank"
                                     rel="noopener noreferrer"
-                                    class="absolute bg-custom-secondary p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out pointer-events-auto"
-                                    style="transform: rotate(180deg) translateY(-405px) translateX(-35px) rotate(-180deg);"
-                                    onmouseover="this.style.transform='rotate(180deg) translateY(-415px) translateX(-35px) rotate(-180deg)'"
-                                    onmouseout="this.style.transform='rotate(180deg) translateY(-405px) translateX(-35px) rotate(-180deg)'">
-                                    <svg class="w-5 h-5 text-custom-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    class="absolute bottom-0 left-1/2 bg-custom-secondary p-2 sm:p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out"
+                                    style="transform: translate(-343%, 2%);">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-custom-primary" fill="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path
-                                            d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
+                                            d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 1.802c2.67 0 2.986.01 4.042.058.95.044 1.466.207 1.81.343.466.182.8.398 1.15.748.35.35.566.684.748 1.15.136.344.3.86.343 1.81.047 1.055.057 1.37.057 3.989 0 2.62-.01 2.934-.057 3.99-.044.948-.207 1.465-.344 1.81-.182.465-.397.8-.747 1.15-.35.35-.684.566-1.15.747-.344.137-.86.3-1.81.344-1.055.047-1.37.057-4.041.057s-2.986-.01-4.042-.057c-.948-.044-1.465-.207-1.81-.344-.466-.182-.8-.398-1.15-.747-.35-.35-.566-.684-.747-1.15-.137-.344-.3-.86-.344-1.81-.047-1.055-.057-1.37-.057-3.989 0-2.62.01-2.934.057-3.99.044-.948.207-1.465.344-1.81.182-.466.397-.8.747-1.15.35-.35.684-.566 1.15-.747.344-.137.86-.3 1.81-.344 1.055-.047 1.37-.057 4.041-.057zm0 3.08c-3.554 0-6.435 2.88-6.435 6.435 0 3.555 2.88 6.435 6.435 6.435 3.555 0 6.435-2.88 6.435-6.435 0-3.555-2.88-6.435-6.435-6.435zm0 10.616c-2.31 0-4.18-1.87-4.18-4.18 0-2.31 1.87-4.18 4.18-4.18 2.31 0 4.18 1.87 4.18 4.18 0 2.31-1.87 4.18-4.18 4.18z" />
                                     </svg>
                                 </a>
 
-                                <!-- Medium (--i: 3 = left) -->
+                                <!-- Medium -->
                                 <a href="https://medium.com/@shubhamtomar1498/" target="_blank"
                                     rel="noopener noreferrer"
-                                    class="absolute bg-custom-secondary p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out pointer-events-auto"
-                                    style="transform: rotate(270deg) translateY(-45px) translateX(-295px) rotate(-270deg);"
-                                    onmouseover="this.style.transform='rotate(270deg) translateY(-45px) translateX(-285px) rotate(-270deg)'"
-                                    onmouseout="this.style.transform='rotate(270deg) translateY(-45px) translateX(-295px) rotate(-270deg)'">
-                                    <svg class="w-5 h-5 text-custom-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    class="absolute top-1/2 left-0 bg-custom-secondary p-2 sm:p-3 rounded-full border border-custom hover:bg-accent hover:border-accent hover:shadow-lg transition-all duration-300 ease-in-out"
+                                    style="transform: translate(-111%, -193%);">
+                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-custom-primary" fill="currentColor"
+                                        viewBox="0 0 24 24">
                                         <path
                                             d="M0 0v24h24V0H0zm19.938 5.686L18.651 6.92a.376.376 0 0 0-.143.362v9.067a.376.376 0 0 0 .143.361l1.257 1.234v.271h-6.322v-.27l1.302-1.265c.128-.128.128-.165.128-.36V8.99l-3.62 9.195h-.49L6.69 8.99v6.163a.85.85 0 0 0 .233.707l1.694 2.054v.271H3.815v-.27L5.51 15.86a.82.82 0 0 0 .218-.707V8.027a.624.624 0 0 0-.203-.527L4.019 5.686v-.27h4.674l3.613 7.923 3.176-7.924h4.456v.271z" />
                                     </svg>
@@ -102,6 +97,8 @@
                     </div>
                 </div>
             </div>
+            </div>
+            </div>
         </section>
 
         <section id="timeline" class="py-16">
@@ -109,184 +106,249 @@
 
             <!-- Cool Horizontal Timeline -->
             <div class="w-full pb-8">
-                <div class="relative w-full mx-auto px-4">
-                    <!-- Horizontal line with gradient -->
-                    <div
-                        class="absolute h-2 top-1/2 left-0 right-0 -translate-y-1/2 bg-gradient-to-r from-green-300 via-green-500 to-green-700 rounded-full shadow-lg">
-                    </div>
-
-                    <!-- Pulse animation on the line -->
-                    <div class="absolute h-2 top-1/2 left-0 right-0 -translate-y-1/2">
+                <div class="relative w-full mx-auto px-2 sm:px-4 max-w-6xl">
+                    <!-- Vertical Timeline for Mobile -->
+                    <div class="relative">
+                        <!-- Vertical line -->
                         <div
-                            class="absolute inset-0 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full animate-pulse opacity-70">
+                            class="hidden md:block absolute left-1/2 w-0.5 h-full bg-gradient-to-b from-green-300 via-green-500 to-green-700 -translate-x-1/2">
                         </div>
-                    </div>
 
-                    <!-- Timeline events container -->
-                    <div class="flex justify-between relative z-10 py-20">
-                        <!-- 1998 - Born -->
-                        <div class="flex flex-col items-center px-4 relative w-1/6 group">
-                            <!-- Single vertical line -->
-                            <div
-                                class="absolute h-10 w-1 bg-green-500 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <!-- Content above line -->
-                            <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-center">
-                                <div
-                                    class="bg-custom-secondary p-3 rounded-lg shadow-md transform group-hover:-translate-y-1 transition-transform duration-300 border-b-4 border-green-500 w-32">
+                        <!-- Mobile timeline items -->
+                        <div class="md:hidden space-y-12">
+                            <!-- 1998 - Born -->
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-green-500 -translate-x-1/2">
+                                </div>
+                                <div class="pl-4">
+                                    <div class="text-green-600 font-bold text-sm mb-1">April 1998</div>
                                     <h3 class="font-semibold text-custom-primary">Born</h3>
                                     <p class="text-xs text-custom-secondary mt-1">The journey begins</p>
                                 </div>
                             </div>
 
-                            <!-- Year below the line -->
-                            <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
-                                <span class="text-green-600 font-bold mt-1 inline-block dark:text-green-400">1998</span>
-                            </div>
-                        </div>
-
-                        <!-- 2016 - School -->
-                        <div class="flex flex-col items-center px-4 relative w-1/6 group">
-                            <!-- Single vertical line -->
-                            <div
-                                class="absolute h-10 w-1 bg-green-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <!-- Year above line -->
-                            <div class="absolute -top-12 left-1/2 -translate-x-1/2 text-center">
-                                <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">2016</span>
-                            </div>
-
-                            <!-- Content below the line -->
-                            <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
-                                <div
-                                    class="bg-custom-secondary p-3 rounded-lg shadow-md transform group-hover:-translate-y-1 transition-transform duration-300 border-t-4 border-green-600 w-32 mt-1">
+                            <!-- 2016 - School -->
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-green-500 -translate-x-1/2">
+                                </div>
+                                <div class="pl-4">
+                                    <div class="text-green-600 font-bold text-sm mb-1">June 2016</div>
                                     <h3 class="font-semibold text-custom-primary">School</h3>
                                     <p class="text-xs text-custom-secondary mt-1">Dayawati Modi Academy</p>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- 2019 - First Job -->
-                        <div class="flex flex-col items-center px-4 relative w-1/6 group">
-                            <!-- Single vertical line -->
-                            <div
-                                class="absolute h-10 w-1 bg-green-500 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <!-- Content above line -->
-                            <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-center">
-                                <div
-                                    class="bg-custom-secondary p-3 rounded-lg shadow-md transform group-hover:-translate-y-1 transition-transform duration-300 border-b-4 border-green-500 w-32">
+                            <!-- 2019 - First Job -->
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-green-500 -translate-x-1/2">
+                                </div>
+                                <div class="pl-4">
+                                    <div class="text-green-600 font-bold text-sm mb-1">Sep 2019</div>
                                     <h3 class="font-semibold text-custom-primary">First Job</h3>
                                     <p class="text-xs text-custom-secondary mt-1">BTM Financials</p>
                                 </div>
                             </div>
 
-                            <!-- Year below the line -->
-                            <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
-                                <span class="text-green-600 font-bold mt-1 inline-block dark:text-green-400">Sep
-                                    2019</span>
-                            </div>
-                        </div>
-
-                        <!-- 2020 Aug - University -->
-                        <div class="flex flex-col items-center px-4 relative w-1/6 group">
-                            <!-- Single vertical line -->
-                            <div
-                                class="absolute h-10 w-1 bg-green-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <!-- Year above line -->
-                            <div class="absolute -top-12 left-1/2 -translate-x-1/2 text-center">
-                                <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">Aug
-                                    2020</span>
-                            </div>
-
-                            <!-- Content below the line -->
-                            <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
-                                <div
-                                    class="bg-custom-secondary p-3 rounded-lg shadow-md transform group-hover:-translate-y-1 transition-transform duration-300 border-t-4 border-green-600 w-32 mt-1">
+                            <!-- 2020 Aug - University -->
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-green-500 -translate-x-1/2">
+                                </div>
+                                <div class="pl-4">
+                                    <div class="text-green-600 font-bold text-sm mb-1">Aug 2020</div>
                                     <h3 class="font-semibold text-custom-primary">Graduation</h3>
                                     <p class="text-xs text-custom-secondary mt-1">GLA University</p>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- 2020 Dec - Juspay -->
-                        <div class="flex flex-col items-center px-4 relative w-1/6 group">
-                            <!-- Single vertical line -->
-                            <div
-                                class="absolute h-10 w-1 bg-green-500 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <!-- Content above line -->
-                            <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-center">
-                                <div
-                                    class="bg-custom-secondary p-3 rounded-lg shadow-md transform group-hover:-translate-y-1 transition-transform duration-300 border-b-4 border-green-500 w-32">
+                            <!-- 2020 Dec - Juspay -->
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-green-500 -translate-x-1/2">
+                                </div>
+                                <div class="pl-4">
+                                    <div class="text-green-600 font-bold text-sm mb-1">Dec 2020</div>
                                     <h3 class="font-semibold text-custom-primary">Juspay</h3>
-                                    <p class="text-xs text-custom-secondary mt-1">Software Engineer</p>
+                                    <p class="text-xs text-custom-secondary mt-1">Data Engineer</p>
                                 </div>
                             </div>
 
-                            <!-- Year below the line -->
-                            <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
-                                <span class="text-green-600 font-bold mt-1 inline-block dark:text-green-400">Dec
-                                    2020</span>
+                            <!-- 2025 - Pixis.ai -->
+                            <div class="relative pl-8">
+                                <div class="absolute left-0 top-2 w-4 h-4 rounded-full bg-green-500 -translate-x-1/2">
+                                </div>
+                                <div class="pl-4">
+                                    <div class="text-green-600 font-bold text-sm mb-1">Jan 2025</div>
+                                    <h3 class="font-semibold text-custom-primary">Pixis.ai</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">Sr. Data Engineer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Desktop Timeline -->
+                    <div class="hidden md:block">
+                        <!-- Horizontal line with gradient -->
+                        <div
+                            class="absolute h-2 top-1/2 left-0 right-0 -translate-y-1/2 bg-gradient-to-r from-green-300 via-green-500 to-green-700 rounded-full shadow-lg">
+                        </div>
+
+                        <!-- Pulse animation on the line -->
+                        <div class="absolute h-2 top-1/2 left-0 right-0 -translate-y-1/2">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-r from-transparent via-green-400 to-transparent rounded-full animate-pulse opacity-70">
                             </div>
                         </div>
 
-                        <!-- 2025 - Pixis.ai -->
-                        <div class="flex flex-col items-center px-4 relative w-1/6 group">
-                            <!-- Single vertical line -->
-                            <div
-                                class="absolute h-10 w-1 bg-green-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
-                            </div>
-
-                            <!-- Year above line -->
-                            <div class="absolute -top-12 left-1/2 -translate-x-1/2 text-center">
-                                <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">Jan
-                                    2025</span>
-                            </div>
-
-                            <!-- Content below the line -->
-                            <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
+                        <!-- Timeline events container -->
+                        <div class="grid grid-cols-6 gap-8 relative z-10 py-8">
+                            <!-- 1998 - Born -->
+                            <div class="flex flex-col items-center relative group">
+                                <!-- Single vertical line -->
                                 <div
-                                    class="bg-custom-secondary p-3 rounded-lg shadow-md transform group-hover:-translate-y-1 transition-transform duration-300 border-t-4 border-green-600 w-32 mt-1">
-                                    <h3 class="font-semibold text-custom-primary">Pixis.ai</h3>
-                                    <p class="text-xs text-custom-secondary mt-1">Sr. Software Engineer</p>
+                                    class="absolute h-10 w-1 bg-green-500 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                </div>
+
+                                <!-- Content above line -->
+                                <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-center w-32">
+                                    <h3 class="font-semibold text-custom-primary text-sm sm:text-base">Born</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">The journey begins</p>
+                                </div>
+
+                                <!-- Year below the line -->
+                                <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
+                                    <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">April
+                                        1998</span>
+                                </div>
+                            </div>
+
+                            <!-- 2016 - School -->
+                            <div class="flex flex-col items-center relative group">
+                                <!-- Single vertical line -->
+                                <div
+                                    class="absolute h-10 w-1 bg-green-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                </div>
+
+                                <!-- Year above line -->
+                                <div class="absolute -top-17 left-1/2 -translate-x-1/2 text-center">
+                                    <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">June
+                                        2016</span>
+                                </div>
+
+                                <!-- Content below the line -->
+                                <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center w-32">
+                                    <h3 class="font-semibold text-custom-primary text-sm sm:text-base">School</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">Dayawati Modi Academy</p>
+                                </div>
+                            </div>
+
+                            <!-- 2019 - First Job -->
+                            <div class="flex flex-col items-center relative group">
+                                <!-- Single vertical line -->
+                                <div
+                                    class="absolute h-10 w-1 bg-green-500 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                </div>
+
+                                <!-- Content above line -->
+                                <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-center w-32">
+                                    <h3 class="font-semibold text-custom-primary text-sm sm:text-base">First Job</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">BTM Financials</p>
+                                </div>
+
+                                <!-- Year below the line -->
+                                <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
+                                    <span class="text-green-600 font-bold mt-1 inline-block dark:text-green-400">Sep
+                                        2019</span>
+                                </div>
+                            </div>
+
+                            <!-- 2020 Aug - University -->
+                            <div class="flex flex-col items-center relative group">
+                                <!-- Single vertical line -->
+                                <div
+                                    class="absolute h-10 w-1 bg-green-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                </div>
+
+                                <!-- Year above line -->
+                                <div class="absolute -top-17 left-1/2 -translate-x-1/2 text-center">
+                                    <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">Aug
+                                        2020</span>
+                                </div>
+
+                                <!-- Content below the line -->
+                                <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center w-32">
+                                    <h3 class="font-semibold text-custom-primary text-sm sm:text-base">Graduation</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">GLA University</p>
+                                </div>
+                            </div>
+
+                            <!-- 2020 Dec - Juspay -->
+                            <div class="flex flex-col items-center relative group">
+                                <!-- Single vertical line -->
+                                <div
+                                    class="absolute h-10 w-1 bg-green-500 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                </div>
+
+                                <!-- Content above line -->
+                                <div class="absolute -top-16 left-1/2 -translate-x-1/2 text-center w-32">
+                                    <h3 class="font-semibold text-custom-primary text-sm sm:text-base">Juspay</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">Data Engineer</p>
+                                </div>
+
+                                <!-- Year below the line -->
+                                <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center">
+                                    <span class="text-green-600 font-bold mt-1 inline-block dark:text-green-400">Dec
+                                        2020</span>
+                                </div>
+                            </div>
+
+                            <!-- 2025 - Pixis.ai -->
+                            <div class="flex flex-col items-center relative group">
+                                <!-- Single vertical line -->
+                                <div
+                                    class="absolute h-10 w-1 bg-green-600 top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2">
+                                </div>
+
+                                <!-- Year above line -->
+                                <div class="absolute -top-17 left-1/2 -translate-x-1/2 text-center">
+                                    <span class="text-green-600 font-bold mb-1 inline-block dark:text-green-400">Jan
+                                        2025</span>
+                                </div>
+
+                                <!-- Content below the line -->
+                                <div class="absolute top-8 left-1/2 -translate-x-1/2 text-center w-32">
+                                    <h3 class="font-semibold text-custom-primary text-sm sm:text-base">Pixis.ai</h3>
+                                    <p class="text-xs text-custom-secondary mt-1">Sr. Data Engineer</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Timeline legend -->
-            <div class="text-center mt-4 text-sm text-custom-secondary">
-                <p>My professional journey through the years</p>
-            </div>
         </section>
 
-        <section id="featured-projects" class="py-16">
-            <h2 class="text-3xl font-bold text-center text-custom-primary mb-12">Featured Projects</h2>
-            <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Projects will be loaded dynamically -->
+        <section id="content-sections" class="py-16 max-w-4xl mx-auto">
+            <!-- Projects Section -->
+            <div id="featured-projects" class="mb-20">
+                <h2 class="text-3xl font-bold text-center text-custom-primary mb-8">Featured Projects</h2>
+                <div id="projects-container" class="space-y-8">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+                <div class="text-center mt-8">
+                    <a href="projects.html" class="inline-block px-6 py-2 bg-accent text-white rounded-full hover:bg-accent-hover transition-colors">
+                        View All Projects →
+                    </a>
+                </div>
             </div>
-            <div class="text-center mt-8">
-                <a href="projects.html" class="text-accent hover:text-accent-hover font-semibold">View All Projects
-                    →</a>
-            </div>
-        </section>
 
-        <section id="recent-blogs" class="py-16">
-            <h2 class="text-3xl font-bold text-center text-custom-primary mb-12">Recent Articles</h2>
-            <div id="blogs-container" class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Blog posts will be loaded dynamically -->
-            </div>
-            <div class="text-center mt-8">
-                <a href="blog.html" class="text-accent hover:text-accent-hover font-semibold">Read All Articles →</a>
+            <!-- Blog Section -->
+            <div id="recent-blogs" class="mt-20">
+                <h2 class="text-3xl font-bold text-center text-custom-primary mb-8">Recent Articles</h2>
+                <div id="blogs-container" class="space-y-8">
+                    <!-- Blog posts will be loaded dynamically -->
+                </div>
+                <div class="text-center mt-8">
+                    <a href="blog.html" class="inline-block px-6 py-2 bg-accent text-white rounded-full hover:bg-accent-hover transition-colors">
+                        Read All Articles →
+                    </a>
+                </div>
             </div>
         </section>
     </main>
@@ -306,6 +368,16 @@
                     const script = document.createElement('script');
                     script.src = 'libs/gsap.min.js';
                     document.body.appendChild(script);
+                    
+                    // Load ScrollTrigger if GSAP is available
+                    fetch('libs/ScrollTrigger.min.js')
+                        .then(response => {
+                            if (response.ok) {
+                                const scrollTrigger = document.createElement('script');
+                                scrollTrigger.src = 'libs/ScrollTrigger.min.js';
+                                document.body.appendChild(scrollTrigger);
+                            }
+                        });
                 }
             })
             .catch(error => {
@@ -314,11 +386,16 @@
     </script>
     <script src="js/main.js" type="module"></script>
     <script src="js/animation.js" type="module"></script>
-    <script src="js/scroll-animations.js" type="module"></script>
+    <script src="js/gsap-animations.js" type="module"></script>
     <script type="module">
-        // Import and initialize scroll animations when DOM is loaded
-        import { initScrollAnimations } from './js/scroll-animations.js';
-        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+        // Import and initialize GSAP animations when DOM is loaded
+        import { initGSAPAnimations } from './js/gsap-animations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add a class to enable animations
+            document.body.classList.add('animations-enabled');
+            // Initialize animations
+            initGSAPAnimations();
+        });
     </script>
 </body>
 

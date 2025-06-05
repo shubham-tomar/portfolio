@@ -19,20 +19,23 @@
     <!-- Header will be loaded dynamically -->
     <div id="header-container"></div>
 
-    <main class="container mx-auto px-4 py-8">
-        <section class="py-12">
-            <h1 class="text-4xl font-bold text-custom-primary mb-8 text-center">My Projects</h1>
-            
-            <div class="mb-8">
-                <div class="flex justify-center space-x-4 mb-8">
-                    <button class="filter-btn active bg-accent hover:bg-accent-hover text-white font-semibold py-2 px-4 rounded-lg transition duration-300" data-filter="all">All</button>
-                    <button class="filter-btn bg-custom-secondary text-custom-primary font-semibold py-2 px-4 rounded-lg transition duration-300 border border-custom" data-filter="web">Web</button>
-                    <button class="filter-btn bg-custom-secondary text-custom-primary font-semibold py-2 px-4 rounded-lg transition duration-300 border border-custom" data-filter="mobile">Mobile</button>
-                    <button class="filter-btn bg-custom-secondary text-custom-primary font-semibold py-2 px-4 rounded-lg transition duration-300 border border-custom" data-filter="other">Other</button>
-                </div>
+    <main class="py-12">
+        <section class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h1 class="text-4xl font-bold text-custom-primary mb-4">My Projects</h1>
+                <p class="text-lg text-custom-secondary max-w-2xl mx-auto">A collection of my work and side projects</p>
             </div>
             
-            <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button class="filter-btn active px-6 py-2 rounded-full font-medium transition-colors bg-accent text-white hover:bg-accent-hover" data-filter="all">All</button>
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-colors bg-custom-secondary text-custom-primary hover:bg-custom-tertiary border border-custom" data-filter="web">Web</button>
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-colors bg-custom-secondary text-custom-primary hover:bg-custom-tertiary border border-custom" data-filter="mobile">Mobile</button>
+                <button class="filter-btn px-6 py-2 rounded-full font-medium transition-colors bg-custom-secondary text-custom-primary hover:bg-custom-tertiary border border-custom" data-filter="other">Other</button>
+            </div>
+            
+            <!-- Projects Grid -->
+            <div id="projects-grid" class="space-y-12">
                 <!-- Projects will be loaded dynamically -->
             </div>
         </section>
@@ -53,6 +56,16 @@
                     const script = document.createElement('script');
                     script.src = 'libs/gsap.min.js';
                     document.body.appendChild(script);
+                    
+                    // Load ScrollTrigger if GSAP is available
+                    fetch('libs/ScrollTrigger.min.js')
+                        .then(response => {
+                            if (response.ok) {
+                                const scrollTrigger = document.createElement('script');
+                                scrollTrigger.src = 'libs/ScrollTrigger.min.js';
+                                document.body.appendChild(scrollTrigger);
+                            }
+                        });
                 }
             })
             .catch(error => {
@@ -61,11 +74,16 @@
     </script>
     <script src="js/main.js" type="module"></script>
     <script src="js/animation.js" type="module"></script>
-    <script src="js/scroll-animations.js" type="module"></script>
+    <script src="js/gsap-animations.js" type="module"></script>
     <script type="module">
-        // Import and initialize scroll animations when DOM is loaded
-        import { initScrollAnimations } from './js/scroll-animations.js';
-        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+        // Import and initialize GSAP animations when DOM is loaded
+        import { initGSAPAnimations } from './js/gsap-animations.js';
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add a class to enable animations
+            document.body.classList.add('animations-enabled');
+            // Initialize animations
+            initGSAPAnimations();
+        });
     </script>
 </body>
 </html>
