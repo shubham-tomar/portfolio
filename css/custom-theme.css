@@ -112,3 +112,30 @@ body, a, button, div {
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 300ms;
 }
+
+/* Scroll animations */
+/* Default state - elements should be visible immediately */
+.animate-on-scroll {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Animation only applies when body has the js-animation-ready class */
+body.js-animation-ready .animate-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Class added when animation should trigger */
+body.js-animation-ready .animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Delay variants for staggered animations */
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }

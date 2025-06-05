@@ -314,6 +314,12 @@
     </script>
     <script src="js/main.js" type="module"></script>
     <script src="js/animation.js" type="module"></script>
+    <script src="js/scroll-animations.js" type="module"></script>
+    <script type="module">
+        // Import and initialize scroll animations when DOM is loaded
+        import { initScrollAnimations } from './js/scroll-animations.js';
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    </script>
 </body>
 
 </html>
