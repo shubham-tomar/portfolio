@@ -59,7 +59,11 @@ export async function fetchAndRenderMarkdown(url, targetElementId) {
         targetElement.innerHTML = '<div class="loading">Loading content...</div>';
         
         // Fetch markdown content
-        const response = await fetch(url);
+        // Use a path that works both locally and on GitHub Pages
+        const basePath = window.location.pathname.includes('/portfolio') ? '/portfolio' : '';
+        // Check if the URL is already absolute or includes the base path
+        const fullUrl = url.startsWith('http') || url.startsWith(basePath) ? url : `${basePath}/${url}`;
+        const response = await fetch(fullUrl);
         
         if (!response.ok) {
             throw new Error(`Failed to fetch markdown from ${url}: ${response.status} ${response.statusText}`);

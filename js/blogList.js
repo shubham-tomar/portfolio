@@ -29,8 +29,9 @@ export async function initBlogList() {
 async function loadBlogPosts() {
     try {
         console.log('Fetching blog posts data...');
-        // Use absolute path to ensure correct loading
-        const response = await fetch('/data/blogList.json');
+        // Use a path that works both locally and on GitHub Pages
+        const basePath = window.location.pathname.includes('/portfolio') ? '/portfolio' : '';
+        const response = await fetch(`${basePath}/data/blogList.json`);
         
         if (!response.ok) {
             throw new Error(`Failed to load blog data: ${response.status} ${response.statusText}`);

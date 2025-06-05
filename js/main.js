@@ -90,7 +90,11 @@ async function loadComponent(containerId, componentPath) {
         
         // Fetch component HTML with cache busting to prevent stale content
         const cacheBuster = `?_=${Date.now()}`;
-        const response = await fetch(`${componentPath}${cacheBuster}`);
+        // Detect if we're on GitHub Pages and adjust path accordingly
+        const basePath = window.location.pathname.includes('/portfolio') ? '/portfolio/' : '/';
+        // Ensure we don't duplicate slashes in the path
+        const adjustedPath = componentPath.startsWith('/') ? componentPath.slice(1) : componentPath;
+        const response = await fetch(`${basePath}${adjustedPath}${cacheBuster}`);
         
         if (!response.ok) {
             throw new Error(`Failed to load ${componentPath}: ${response.status} ${response.statusText}`);

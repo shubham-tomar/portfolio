@@ -25,7 +25,9 @@ export async function initProjects() {
  */
 async function loadProjects() {
     try {
-        const response = await fetch('data/projects.json');
+        // Use a path that works both locally and on GitHub Pages
+        const basePath = window.location.pathname.includes('/portfolio') ? '/portfolio' : '';
+        const response = await fetch(`${basePath}/data/projects.json`);
         
         if (!response.ok) {
             throw new Error(`Failed to load project data: ${response.status} ${response.statusText}`);

@@ -877,21 +877,6 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
-  .delay-100 {
-    transition-delay: 100ms;
-  }
-  .delay-200 {
-    transition-delay: 200ms;
-  }
-  .delay-300 {
-    transition-delay: 300ms;
-  }
-  .delay-400 {
-    transition-delay: 400ms;
-  }
-  .delay-500 {
-    transition-delay: 500ms;
-  }
   .duration-300 {
     --tw-duration: 300ms;
     transition-duration: 300ms;
