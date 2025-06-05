@@ -286,19 +286,36 @@ function initAboutPage() {
             title: 'Senior Data Engineer',
             company: 'Pixis.ai',
             period: 'Jan 2025 - Present',
-            description: 'Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks.'
+            description: `Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks.
+            <ul class="list-disc pl-5 mt-3 space-y-1">
+                <li>Developed Nessie go-client library for seamless interaction with Nessie catalog.</li>
+                <li>Developed icebridge microservice which acts as a bridge between Nessie catalog and other applications with Iceberg.</li>
+                <li>Contributed to open source <a href="https://github.com/apache/iceberg-go" class="text-accent hover:text-accent-hover font-semibold" target="_blank">apache/iceberg-go</a> library by adding <a href="https://github.com/apache/iceberg-go/pull/308" class="text-accent hover:text-accent-hover font-semibold" target="_blank">fix for createTable API</a>.</li>
+                <li>Migrated 4TB of Postgres data from non-partitioned to partitioned schema using custom built pgx-copy pipeline for faster data transfer. Improved query performance by 4x.</li>
+            </ul>`
         },
         {
             title: 'Data Engineer',
             company: 'Juspay Technologies',
             period: 'Dec 2020 - Dec 2024',
-            description: 'Developed in house data platform to handle batch as well as real-time data processing using Kafka, cassandra, Clickhouse, and other modern data engineering tools and frameworks.'
+            description: `Developed in house data platform to handle batch as well as real-time data processing using Kafka, cassandra, Clickhouse, and other modern data engineering tools and frameworks.
+                <ul class="list-disc pl-5 mt-3 space-y-1">
+                    <li>Spearheaded the development of a robust ETL Data Framework for handling over 20 million transactions daily across diverse data sources (MySQL, Postgres, Kafka, Clickhouse, BigQuery), ensuring optimal monitoring, alerting, and data availability.</li>
+                    <li>Engineered a high-throughput Real-Time Streaming pipeline, achieving ~150k logs/sec, integrating technologies such as Redis Streams, Cassandra, Kafka, and Clickhouse.</li>
+                    <li>Achieved a significant reduction in data pipeline costs by approximately 80% and enhanced analytical query performance by 10x, leveraging Clickhouse optimizations.</li>
+                    <li>Pioneered the Autopilot platform for seamless cloud deployments (GCP/AWS), incorporating features like config control, staggered release, and autoscaling, enhancing deployment efficiency and cloud resource management.</li>
+                </ul>`
         },
         {
             title: 'Software Engineer',
             company: 'BTM Financial',
             period: 'Sep 2019 - Dec 2020',
-            description: 'Worked with various international clients to build and maintain their applications using modern tools and frameworks.'
+            description: `Worked with various international clients to build and maintain their applications using modern tools and frameworks.
+            <ul class="list-disc pl-5 mt-3 space-y-1">
+                <li>Helped BTM setup RDBMS data source, design schema and data flow for a edTech website.</li>
+                <li>Created a pipeline to fetch tweets related to crypto currency and performed sentiment analysis using LSTM.</li>
+                <li>Migrate and automate quantitative regression tests from excel sheets to a python framework.</li>
+            </ul>`
         }
     ];
     
@@ -308,9 +325,9 @@ function initAboutPage() {
             const expElement = document.createElement('div');
             expElement.className = 'border-l-4 border-blue-600 pl-4';
             expElement.innerHTML = `
-                <h3 class="text-xl font-bold text-gray-800 dark:text-white">${exp.title}</h3>
-                <p class="text-gray-600 dark:text-gray-400">${exp.company} | ${exp.period}</p>
-                <p class="text-gray-700 dark:text-gray-300 mt-2">${exp.description}</p>
+                <h3 class="text-xl font-bold text-custom-primary">${exp.title}</h3>
+                <p class="text-custom-accent">${exp.company} | ${exp.period}</p>
+                <p class="text-custom-secondary mt-2">${exp.description}</p>
             `;
             experienceContainer.appendChild(expElement);
         });
@@ -332,9 +349,9 @@ function initAboutPage() {
             const eduElement = document.createElement('div');
             eduElement.className = 'border-l-4 border-blue-600 pl-4';
             eduElement.innerHTML = `
-                <h3 class="text-xl font-bold text-gray-800 dark:text-white">${edu.degree}</h3>
-                <p class="text-gray-600 dark:text-gray-400">${edu.school} | ${edu.period}</p>
-                <p class="text-gray-700 dark:text-gray-300 mt-2">${edu.description}</p>
+                <h3 class="text-xl font-bold text-custom-primary">${edu.degree}</h3>
+                <p class="text-custom-accent">${edu.school} | ${edu.period}</p>
+                <p class="text-custom-secondary mt-2">${edu.description}</p>
             `;
             educationContainer.appendChild(eduElement);
         });
