@@ -125,7 +125,7 @@ code {
 }
 
 .wave-text {
-  animation: waveMove 10s linear infinite;
+  animation: waveMove 20s linear infinite;
 }
 
 @keyframes waveMove {

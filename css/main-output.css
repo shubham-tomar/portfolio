@@ -1377,7 +1377,7 @@ code {
   opacity: 1;
 }
 .wave-text {
-  animation: waveMove 10s linear infinite;
+  animation: waveMove 20s linear infinite;
 }
 @keyframes waveMove {
   0% {
