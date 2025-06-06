@@ -112,6 +112,10 @@ code {
 /* Hero background text wave */
 .hero-text-wave {
   z-index: 0;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+  -webkit-mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
+  mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
 }
 
 #hero:hover .hero-text-wave {
