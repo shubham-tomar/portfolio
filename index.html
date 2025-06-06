@@ -26,8 +26,21 @@
     <div id="header-container"></div>
 
     <main class="container mx-auto px-4 py-8">
-        <section id="hero" class="py-16">
-            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 px-4 sm:px-6">
+        <section id="hero" class="relative py-16 overflow-hidden">
+            <div class="hero-text-wave absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300 flex items-center justify-center">
+                <div class="wave-wrapper flex flex-col items-center space-y-2">
+                    <p class="wave-text text-xs sm:text-sm text-custom-secondary whitespace-nowrap">
+                        HTML • CSS • JavaScript • Tailwind • React • Node.js • Express • MongoDB • PostgreSQL • Docker • AWS • Kafka • Redis • ClickHouse
+                    </p>
+                    <p class="wave-text text-xs sm:text-sm text-custom-secondary whitespace-nowrap">
+                        HTML • CSS • JavaScript • Tailwind • React • Node.js • Express • MongoDB • PostgreSQL • Docker • AWS • Kafka • Redis • ClickHouse
+                    </p>
+                    <p class="wave-text text-xs sm:text-sm text-custom-secondary whitespace-nowrap">
+                        HTML • CSS • JavaScript • Tailwind • React • Node.js • Express • MongoDB • PostgreSQL • Docker • AWS • Kafka • Redis • ClickHouse
+                    </p>
+                </div>
+            </div>
+            <div class="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 px-4 sm:px-6">
                 <div class="w-full lg:w-1/2 text-center lg:text-left mb-8 lg:mb-0">
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-custom-primary mb-4 leading-tight">Hi,
                         I'm Shubham Tomar</h1>

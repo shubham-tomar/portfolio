@@ -108,3 +108,25 @@ code {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
 }
+
+/* Hero background text wave */
+.hero-text-wave {
+  z-index: 0;
+}
+
+#hero:hover .hero-text-wave {
+  opacity: 0.2;
+}
+
+.wave-text {
+  animation: waveMove 10s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
