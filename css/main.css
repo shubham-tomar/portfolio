@@ -116,10 +116,12 @@ code {
   --cursor-y: 50%;
   -webkit-mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
   mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 #hero:hover .hero-text-wave {
-  opacity: 0.2;
+  opacity: 1;
 }
 
 .wave-text {

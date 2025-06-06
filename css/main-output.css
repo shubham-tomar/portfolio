@@ -70,8 +70,6 @@
     --radius-md: 0.375rem;
     --radius-lg: 0.5rem;
     --radius-xl: 0.75rem;
-    --ease-in: cubic-bezier(0.4, 0, 1, 1);
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
     --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     --blur-sm: 8px;
@@ -465,6 +463,9 @@
   }
   .items-start {
     align-items: flex-start;
+  }
+  .justify-around {
+    justify-content: space-around;
   }
   .justify-between {
     justify-content: space-between;
@@ -1369,9 +1370,11 @@ code {
   --cursor-y: 50%;
   -webkit-mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
   mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 #hero:hover .hero-text-wave {
-  opacity: 0.2;
+  opacity: 1;
 }
 .wave-text {
   animation: waveMove 10s linear infinite;
