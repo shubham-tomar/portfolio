@@ -108,3 +108,31 @@ code {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
 }
+
+/* Hero background text wave */
+.hero-text-wave {
+  z-index: 0;
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+  -webkit-mask-image: radial-gradient(circle 20vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 40%);
+  mask-image: radial-gradient(circle 20vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 40%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+#hero:hover .hero-text-wave {
+  opacity: 1%;
+}
+
+.wave-text {
+  animation: waveMove 120s linear infinite;
+}
+
+@keyframes waveMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
