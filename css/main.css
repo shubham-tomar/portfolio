@@ -114,25 +114,25 @@ code {
   z-index: 0;
   --cursor-x: 50%;
   --cursor-y: 50%;
-  -webkit-mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
-  mask-image: radial-gradient(circle 10vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 60%);
+  -webkit-mask-image: radial-gradient(circle 20vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 40%);
+  mask-image: radial-gradient(circle 20vmax at var(--cursor-x) var(--cursor-y), #000 0%, transparent 40%);
   -webkit-mask-repeat: no-repeat;
   mask-repeat: no-repeat;
 }
 
 #hero:hover .hero-text-wave {
-  opacity: 1;
+  opacity: 1%;
 }
 
 .wave-text {
-  animation: waveMove 20s linear infinite;
+  animation: waveMove 120s linear infinite;
 }
 
 @keyframes waveMove {
   0% {
-    transform: translateX(0);
+    background-position: 0 0;
   }
   100% {
-    transform: translateX(-50%);
+    background-position: -100% 0;
   }
 }
