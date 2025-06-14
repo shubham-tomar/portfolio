@@ -48,5 +48,15 @@
     "imageUrl": "https://miro.medium.com/v2/resize:fit:1400/format:webp/0*e7K9zB0IVNWsu4ik",
     "mediumUrl": "https://medium.com/@shubhamtomar1498/deploy-your-rust-application-on-aws-ec2-with-scaling-and-automation-6427c37b6e24",
     "markdownFile": null
+  },
+  {
+    "id": "blog6",
+    "title": "Understanding Skip Lists and Their Benefits for Modern Databases",
+    "date": "June 10, 2025",
+    "category": "Database",
+    "summary": "Formally, a skip list is a probabilistic data structure consisting of multiple layers of linked lists, It is a tower of linked list where at each higher level we skip few nodesFormally defined, a skip list stands as a probabilistic data structure constructed from a series of hierarchically arranged linked lists.",
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:2000/format:webp/0*6kvGM-sbT7I5xxnh",
+    "mediumUrl": "https://medium.com/gitconnected/skip-lists-and-their-benefits-for-modern-databases-b592ef49327c",
+    "markdownFile": null
   }
 ]
