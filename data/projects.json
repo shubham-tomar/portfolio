@@ -17,7 +17,7 @@
     "category": "Data Engineering",
     "technologies": ["Rust", "Kafka", "Clickhouse", "Doris", "Nix"],
     "imageUrl": "assets/images/project-placeholder.jpg",
-    "githubUrl": "https://github.com/shubham-tomar/data-sync-tool/tree/main/rust_kafka",
+    "githubUrl": "https://github.com/shubham-tomar/adhoc/tree/main/rust-kafka-to-doris",
     "featured": true
   },
   {

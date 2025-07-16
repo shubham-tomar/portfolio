@@ -9,7 +9,7 @@ function checkGSAPDependencies() {
     console.warn('GSAP library not loaded. Animations will be disabled.');
     return false;
   }
-  
+
   // Check for ScrollTrigger plugin
   if (typeof gsap.registerPlugin === 'function' && typeof ScrollTrigger !== 'undefined') {
     gsap.registerPlugin(ScrollTrigger);
@@ -24,7 +24,7 @@ function checkGSAPDependencies() {
 // Initialize GSAP animations
 export function initGSAPAnimations() {
   if (!checkGSAPDependencies()) return;
-  
+
   // Add a small delay to ensure DOM elements are fully loaded
   setTimeout(() => {
     animateHeroSection();
@@ -38,20 +38,20 @@ export function initGSAPAnimations() {
 function animateHeroSection() {
   const heroSection = document.querySelector('.hero-section');
   if (!heroSection) return;
-  
+
   const profileImage = heroSection.querySelector('.profile-image-container');
   const socialIcons = heroSection.querySelectorAll('.social-icon');
   const heroText = heroSection.querySelector('h1');
   const heroParagraph = heroSection.querySelector('p');
   const heroButton = heroSection.querySelector('a.btn');
-  
+
   // Create a timeline for hero section
   const tlHero = gsap.timeline();
-  
+
   // Profile image animation
   if (profileImage) {
     gsap.set(profileImage, { opacity: 0, scale: 0.8 });
-    
+
     tlHero.to(profileImage, {
       opacity: 1,
       scale: 1,
@@ -59,11 +59,11 @@ function animateHeroSection() {
       ease: "back.out(1.7)"
     });
   }
-  
+
   // Social icons animation
   if (socialIcons.length) {
     gsap.set(socialIcons, { opacity: 0, scale: 0 });
-    
+
     tlHero.to(socialIcons, {
       opacity: 1,
       scale: 1,
@@ -72,7 +72,7 @@ function animateHeroSection() {
       ease: "back.out(2)"
     }, "-=0.5");
   }
-  
+
   // Text animations
   if (heroText) {
     gsap.set(heroText, { opacity: 0, y: 30 });
@@ -83,7 +83,7 @@ function animateHeroSection() {
       ease: "power3.out"
     }, "-=0.7");
   }
-  
+
   if (heroParagraph) {
     gsap.set(heroParagraph, { opacity: 0, y: 20 });
     tlHero.to(heroParagraph, {
@@ -93,7 +93,7 @@ function animateHeroSection() {
       ease: "power3.out"
     }, "-=0.6");
   }
-  
+
   if (heroButton) {
     gsap.set(heroButton, { opacity: 0, y: 20 });
     tlHero.to(heroButton, {
@@ -108,16 +108,16 @@ function animateHeroSection() {
 // Content sections animations
 function animateContentSections() {
   const sections = document.querySelectorAll('section');
-  
+
   sections.forEach(section => {
     if (section.classList.contains('hero-section')) return; // Skip hero section
-    
+
     const heading = section.querySelector('h2, h1');
     const content = section.querySelectorAll('p, .content');
-    
+
     if (heading) {
       gsap.set(heading, { opacity: 0, y: 30 });
-      
+
       gsap.to(heading, {
         scrollTrigger: {
           trigger: heading,
@@ -130,10 +130,10 @@ function animateContentSections() {
         ease: "power3.out"
       });
     }
-    
+
     if (content.length) {
       gsap.set(content, { opacity: 0, y: 30 });
-      
+
       gsap.to(content, {
         scrollTrigger: {
           trigger: content[0],
@@ -156,9 +156,9 @@ function animateProjectsAndBlogs() {
   const projectsContainer = document.getElementById('projects-container') || document.getElementById('projects-grid');
   if (projectsContainer) {
     const projects = projectsContainer.children;
-    
+
     gsap.set(projects, { opacity: 0, y: 50 });
-    
+
     gsap.to(projects, {
       scrollTrigger: {
         trigger: projectsContainer,
@@ -172,14 +172,14 @@ function animateProjectsAndBlogs() {
       ease: "power3.out"
     });
   }
-  
+
   // Blogs
   const blogsContainer = document.getElementById('blogs-container') || document.getElementById('blog-container');
   if (blogsContainer) {
     const blogs = blogsContainer.children;
-    
+
     gsap.set(blogs, { opacity: 0, y: 50 });
-    
+
     gsap.to(blogs, {
       scrollTrigger: {
         trigger: blogsContainer,
@@ -199,12 +199,12 @@ function animateProjectsAndBlogs() {
 function animateTimelineSection() {
   const timelineSection = document.querySelector('.timeline-section');
   if (!timelineSection) return;
-  
+
   // Mobile timeline events
   const mobileTimelineEvents = timelineSection.querySelectorAll('.md\\:hidden .relative');
   if (mobileTimelineEvents.length) {
     gsap.set(mobileTimelineEvents, { opacity: 0, x: -50 });
-    
+
     mobileTimelineEvents.forEach(event => {
       gsap.to(event, {
         scrollTrigger: {
@@ -219,12 +219,12 @@ function animateTimelineSection() {
       });
     });
   }
-  
+
   // Desktop timeline events
   const desktopTimelineEvents = timelineSection.querySelectorAll('.hidden.md\\:block .absolute');
   if (desktopTimelineEvents.length) {
     gsap.set(desktopTimelineEvents, { opacity: 0, y: 30 });
-    
+
     desktopTimelineEvents.forEach(event => {
       gsap.to(event, {
         scrollTrigger: {
@@ -239,15 +239,15 @@ function animateTimelineSection() {
       });
     });
   }
-  
+
   // Timeline line animation
   const timelineLine = timelineSection.querySelector('.bg-gradient-to-b, .bg-gradient-to-r');
   if (timelineLine) {
-    gsap.set(timelineLine, { 
-      scaleY: 0, 
+    gsap.set(timelineLine, {
+      scaleY: 0,
       transformOrigin: "top center"
     });
-    
+
     gsap.to(timelineLine, {
       scrollTrigger: {
         trigger: timelineLine,

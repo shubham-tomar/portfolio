@@ -257,12 +257,13 @@ function initHomePage() {
 function initAboutPage() {
     // Load skills
     const skills = [
-        { name: 'Data Engineering', level: 95 },
+        { name: 'Backend', level: 95 },
+        { name: 'Data Engineering', level: 90 },
         { name: 'Databases Internals', level: 90 },
-        { name: 'Data Warehousing', level: 90 },
         { name: 'ETL', level: 85 },
+        { name: 'Systems', level: 85 },
         { name: 'Real-time Data Processing', level: 80 },
-        { name: 'Building Microservices', level: 75 },
+        { name: 'Building Microservices', level: 85 },
         { name: 'Data LakeHouse', level: 80 }
     ];
     
@@ -292,6 +293,7 @@ function initAboutPage() {
             period: 'Jan 2025 - Present',
             description: `Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks.
             <ul class="list-disc pl-5 mt-3 space-y-1">
+                <li>Helped Pixis build <a href="https://interact.pixis.ai/interact" class="text-accent hover:text-accent-hover font-semibold" target="_blank">Interact</a>, a conversational analytics interface for marketing teams to query ad performance and receive actionable insights. Leveraged MongoDB to store dynamic queries, responses, and campaign metadata for personalized recommendations and traceability.</li>
                 <li>Developed Nessie go-client library for seamless interaction with Nessie catalog.</li>
                 <li>Developed icebridge microservice which acts as a bridge between Nessie catalog and other applications with Iceberg.</li>
                 <li>Contributed to open source <a href="https://github.com/apache/iceberg-go" class="text-accent hover:text-accent-hover font-semibold" target="_blank">apache/iceberg-go</a> library by adding <a href="https://github.com/apache/iceberg-go/pull/308" class="text-accent hover:text-accent-hover font-semibold" target="_blank">fix for createTable API</a>.</li>

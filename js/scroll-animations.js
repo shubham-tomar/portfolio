@@ -15,13 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!element) return;
     
     if (section.id === 'hero') {
+      // Set hero elements to be visible immediately
       const textElements = element.querySelectorAll('h1, p');
-      gsap.fromTo(textElements, 
-        { y: 30, autoAlpha: 0 },
-        { y: 0, autoAlpha: 1, stagger: 0.2, duration: 0.8, ease: 'power2.out',
-          scrollTrigger: { trigger: element, start: section.start, once: true }
-        }
-      );
+      // Make sure text elements are visible from the start
+      gsap.set(textElements, { autoAlpha: 1, y: 0 });
+      
+      // Only animate if user scrolls back to top after page has loaded
+      setTimeout(() => {
+        ScrollTrigger.create({
+          trigger: element,
+          start: section.start,
+          once: true,
+          onEnter: () => {
+            // User scrolled back to hero after initial load
+            gsap.fromTo(textElements, 
+              { y: 10 }, // Don't set autoAlpha: 0 here
+              { y: 0, duration: 0.5, ease: 'power2.out', stagger: 0.1 }
+            );
+          }
+        });
+      }, 500); // Delay creating scroll trigger
     } else if (section.id === 'journey-timeline') {
       const container = document.getElementById('timeline-container');
       if (container) {
@@ -67,5 +80,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  setTimeout(() => sections.forEach(initSectionAnimation), 100);
+  // Initialize hero section immediately, others with a slight delay
+  const heroSection = sections.find(section => section.id === 'hero');
+  if (heroSection) initSectionAnimation(heroSection);
+  
+  // Delay other sections slightly
+  setTimeout(() => {
+    sections.forEach(section => {
+      if (section.id !== 'hero') initSectionAnimation(section);
+    });
+  }, 100);
 });

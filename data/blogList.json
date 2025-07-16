@@ -58,5 +58,15 @@
     "imageUrl": "https://miro.medium.com/v2/resize:fit:2000/format:webp/0*6kvGM-sbT7I5xxnh",
     "mediumUrl": "https://medium.com/gitconnected/skip-lists-and-their-benefits-for-modern-databases-b592ef49327c",
     "markdownFile": null
+  },
+  {
+    "id": "blog7",
+    "title": "ZSTD vs Snappy for Small File Insertion in Apache Iceberg",
+    "date": "June 30, 2025",
+    "category": "Database",
+    "summary": "Why Apache Iceberg ditched gzip for ZSTD as the default — and what it means for your streaming data pipelines",
+    "imageUrl": "https://miro.medium.com/v2/resize:fit:1000/format:webp/0*BFxJHnox3ovDnDdo",
+    "mediumUrl": "https://medium.com/data-engineer-things/the-great-compression-debate-zstd-vs-snappy-for-small-file-insertion-in-apache-iceberg-f92fafe7b0c2",
+    "markdownFile": null
   }
 ]
