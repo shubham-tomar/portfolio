@@ -301,7 +301,7 @@ function initAboutPage() {
             </ul>`
         },
         {
-            title: 'Data Engineer',
+            title: 'Product Engineer - Data',
             company: 'Juspay Technologies',
             period: 'Dec 2020 - Dec 2024',
             description: `Developed in house data platform to handle batch as well as real-time data processing using Kafka, cassandra, Clickhouse, and other modern data engineering tools and frameworks.
