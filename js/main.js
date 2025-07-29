@@ -291,7 +291,7 @@ function initAboutPage() {
             title: 'Senior Data Engineer',
             company: 'Pixis.ai',
             period: 'Jan 2025 - Present',
-            description: `Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks.
+            description: `Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks, ingesting +500 Million events per day.
             <ul class="list-disc pl-5 mt-3 space-y-1">
                 <li>Helped Pixis build <a href="https://interact.pixis.ai/interact" class="text-accent hover:text-accent-hover font-semibold" target="_blank">Interact</a>, an AI powered conversational analytics interface for marketing teams to query ad performance and receive actionable insights. Leveraged MongoDB to store dynamic queries, responses, and campaign metadata for personalized recommendations and traceability.</li>
                 <li>Developed Nessie go-client library for seamless interaction with Nessie catalog.</li>
@@ -306,7 +306,7 @@ function initAboutPage() {
             period: 'Dec 2020 - Dec 2024',
             description: `Developed in house data platform to handle batch as well as real-time data processing using Kafka, cassandra, Clickhouse, and other modern data engineering tools and frameworks.
                 <ul class="list-disc pl-5 mt-3 space-y-1">
-                    <li>Spearheaded the development of a robust ETL Data Framework for handling over 20 million transactions daily across diverse data sources (MySQL, Postgres, Kafka, Clickhouse, BigQuery), ensuring optimal monitoring, alerting, and data availability.</li>
+                    <li>Spearheaded the development of a robust ETL Data Framework for handling over 200 million transactions daily across diverse data sources (MySQL, Postgres, Kafka, Clickhouse, BigQuery), ensuring optimal monitoring, alerting, and data availability.</li>
                     <li>Engineered a high-throughput Real-Time Streaming pipeline, achieving ~150k logs/sec, integrating technologies such as Redis Streams, Cassandra, Kafka, and Clickhouse.</li>
                     <li>Achieved a significant reduction in data pipeline costs by approximately 80% and enhanced analytical query performance by 10x, leveraging Clickhouse optimizations.</li>
                     <li>Pioneered the Autopilot platform for seamless cloud deployments (GCP/AWS), incorporating features like config control, staggered release, and autoscaling, enhancing deployment efficiency and cloud resource management.</li>
