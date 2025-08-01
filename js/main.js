@@ -307,7 +307,7 @@ function initAboutPage() {
             description: `Developed in house data platform to handle batch as well as real-time data processing using Kafka, cassandra, Clickhouse, and other modern data engineering tools and frameworks.
                 <ul class="list-disc pl-5 mt-3 space-y-1">
                     <li>Spearheaded the development of a robust ETL Data Framework for handling over 200 million transactions daily across diverse data sources (MySQL, Postgres, Kafka, Clickhouse, BigQuery), ensuring optimal monitoring, alerting, and data availability.</li>
-                    <li>Engineered a high-throughput Real-Time Streaming pipeline, achieving ~150k logs/sec, integrating technologies such as Redis Streams, Cassandra, Kafka, and Clickhouse.</li>
+                    <li>Engineered a high-throughput Real-Time Streaming pipeline, achieving ~350k logs/sec, integrating technologies such as Redis Streams, Cassandra, Kafka, and Clickhouse.</li>
                     <li>Achieved a significant reduction in data pipeline costs by approximately 80% and enhanced analytical query performance by 10x, leveraging Clickhouse optimizations.</li>
                     <li>Pioneered the Autopilot platform for seamless cloud deployments (GCP/AWS), incorporating features like config control, staggered release, and autoscaling, enhancing deployment efficiency and cloud resource management.</li>
                 </ul>`
