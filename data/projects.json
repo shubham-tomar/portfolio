@@ -1,6 +1,16 @@
 [
   {
     "id": 1,
+    "title": "Feature Toggler",
+    "description": "A framework to toggle features in a live app.",
+    "category": "Backend",
+    "technologies": ["GraphQl", "SQLite", "GoLang", "Nix"],
+    "imageUrl": "assets/images/ff.jpg",
+    "githubUrl": "https://github.com/shubham-tomar/feature-toggler",
+    "featured": true
+  },
+  {
+    "id": 2,
     "title": "Personal Portfolio Website",
     "description": "A responsive portfolio website built with vanilla JavaScript and TailwindCSS.",
     "category": "Web",
@@ -11,7 +21,7 @@
     "featured": true
   },
   {
-    "id": 2,
+    "id": 3,
     "title": "Data Sync Tool",
     "description": "A tool to sync data between different data sources.",
     "category": "Data Engineering",
@@ -21,23 +31,12 @@
     "featured": true
   },
   {
-    "id": 3,
+    "id": 4,
     "title": "Icebridge",
     "description": "A microservice which acts as a bridge between Nessie catalog and other applications with Iceberg.",
     "category": "Data Engineering",
     "technologies": ["Go", "Arrow", "Iceberg", "Nessie", "Doris", "Nix"],
     "imageUrl": "assets/images/project-placeholder.jpg",
-    "githubUrl": "https://github.com/shubham-tomar/",
     "featured": true
-  },
-  {
-    "id": 4,
-    "title": "ETL batch framework",
-    "description": "A framework to sync data postgres to Clickhouse.",
-    "category": "Data Engineering",
-    "technologies": ["Bash", "Clickhouse", "s3", "Haskell"],
-    "imageUrl": "assets/images/project-placeholder.jpg",
-    "demoUrl": "#",
-    "featured": false
   }
 ]
