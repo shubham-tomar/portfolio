@@ -1,0 +1,14 @@
+<div class="blog-card bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div class="relative">
+        <img class="blog-image w-full h-48 object-cover" src="{{imageUrl}}" alt="{{title}}">
+        <div class="absolute top-0 right-0 bg-blue-600 text-white text-sm font-semibold py-1 px-3 rounded-bl-lg">
+            {{category}}
+        </div>
+    </div>
+    <div class="p-6">
+        <h3 class="text-xl font-bold text-gray-800 dark:text-white mb-2">{{title}}</h3>
+        <p class="text-gray-600 dark:text-gray-300 text-sm mb-4">{{date}}</p>
+        <p class="text-gray-700 dark:text-gray-300 mb-4">{{summary}}</p>
+        <a href="{{mediumUrl}}" target="_blank" rel="noopener noreferrer" class="inline-block text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 font-semibold">Read More →</a>
+    </div>
+</div>

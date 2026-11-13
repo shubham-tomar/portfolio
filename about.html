@@ -1,14 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shubham Tomar | Staff Engineer, Data Platforms</title>
-    <link rel="canonical" href="index.html#about">
-    <meta http-equiv="refresh" content="0; url=index.html#about">
-    <script>location.replace('index.html#about');</script>
+    <title>About Me | Shubham Tomar</title>
+    <meta name="description" content="Learn more about Shubham Tomar - my background, skills, and experiences">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Utils JS for common functions -->
+    <script src="js/utils.js" type="module"></script>
+    <link rel="stylesheet" href="css/main-output.css?v=1708682349">
+    <link rel="stylesheet" href="css/themes-output.css?v=1708682349">
+    <link rel="stylesheet" href="css/custom-theme.css?v=1708682349">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
 </head>
-<body>
-    <p>This page has moved to <a href="index.html#about">the about section</a>.</p>
+
+<body class="bg-custom-primary transition-colors duration-300">
+    <!-- Header will be loaded dynamically -->
+    <div id="header-container"></div>
+
+    <main class="container mx-auto px-4 py-8">
+        <section class="py-12 max-w-4xl mx-auto">
+            <h1 class="text-4xl font-bold text-custom-primary mb-8">About Me</h1>
+
+            <div class="flex flex-col md:flex-row gap-8 mb-12">
+                <div class="md:w-1/3">
+                    <div class="rounded-lg overflow-hidden shadow-lg">
+                        <img id="profile-image" src="assets/images/dp-3.jpg" alt="Shubham Tomar" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="md:w-2/3">
+                    <p class="text-lg text-custom-secondary mb-4">
+                        Hello! I'm Shubham Tomar, a Staff Engineer at Zycus with 7+ years of experience building data platforms and distributed backend systems that run at scale.
+                    </p>
+                    <p class="text-lg text-custom-secondary mb-4">
+                        Right now I'm building the Zycus Data Platform, streaming 200+ Postgres databases into ClickHouse through a custom CDC pipeline, and Merlin Insights, a chat-driven analytics layer on top of it. Before that I built a lakehouse ingesting 500M+ events a day at Pixis and real-time payment data pipelines at Juspay.
+                    </p>
+                    <p class="text-lg text-custom-secondary">
+                        I specialize in designing and scaling distributed backend systems, real-time and batch data pipelines, lakehouse architectures and database internals, and I write about what I learn along the way.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-custom-primary mb-6">My Skills</h2>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="skills-container">
+                    <!-- Skills will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-custom-primary mb-6">Tech Stack</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="p-4 border border-custom-border rounded-lg">
+                        <h3 class="text-xl font-semibold text-custom-accent mb-3">Languages & Frameworks</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Python</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Haskell</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Node.js</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Java</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Rust</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Go</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Bash</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">SQL</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">R</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">GraphQl</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Flink</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Spark</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border border-custom-border rounded-lg">
+                        <h3 class="text-xl font-semibold text-custom-accent mb-3">Databases</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Iceberg</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Clickhouse</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">MongoDB</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">BigQuery</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Cassandra</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Doris</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Redis</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">MySQL/Postgres</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">ElasticSearch/Opensearch</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">RedShift</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">RocksDB</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">vectoriaMetrics</span>
+                        </div>
+                    </div>
+                    
+                    <div class="p-4 border border-custom-border rounded-lg">
+                        <h3 class="text-xl font-semibold text-custom-accent mb-3">Tools & Services</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Git</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Kubernetes</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">CI/CD</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">AWS/GCP</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Nix</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Nessie</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Lambda</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Docker</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Kafka</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Warpstream</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Grafana</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">Airflow/Prefect</span>
+                            <span class="px-3 py-1 bg-custom-secondary/10 text-custom-secondary rounded-full">CDC</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="mb-12">
+                <h2 class="text-2xl font-bold text-custom-primary mb-6">Experience</h2>
+                <div class="space-y-8" id="experience-container">
+                    <!-- Experience will be loaded dynamically -->
+                </div>
+            </div>
+
+            <div>
+                <h2 class="text-2xl font-bold text-custom-primary mb-6">Education</h2>
+                <div class="space-y-8" id="education-container">
+                    <!-- Education will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer will be loaded dynamically -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script>
+        // Check if libs directory exists before loading GSAP
+        fetch('libs/gsap.min.js')
+            .then(response => {
+                if (!response.ok) {
+                    console.warn('GSAP library not found. Animations will be disabled.');
+                } else {
+                    // Create and load GSAP script dynamically if it exists
+                    const script = document.createElement('script');
+                    script.src = 'libs/gsap.min.js';
+                    document.body.appendChild(script);
+                }
+            })
+            .catch(error => {
+                console.warn('Error checking for GSAP library:', error);
+            });
+    </script>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/animation.js" type="module"></script>
+    <script src="js/scroll-animations.js" type="module"></script>
+    <script type="module">
+        // Import and initialize scroll animations when DOM is loaded
+        import { initScrollAnimations } from './js/scroll-animations.js';
+        document.addEventListener('DOMContentLoaded', initScrollAnimations);
+    </script>
 </body>
+
 </html>
