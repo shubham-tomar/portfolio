@@ -288,10 +288,20 @@ function initAboutPage() {
     // Load experience
     const experiences = [
         {
+            title: 'Staff Engineer',
+            company: 'Zycus',
+            period: 'Jun 2026 - Present',
+            description: `Building the data and analytics foundation behind Zycus products, from change data capture to conversational analytics.
+            <ul class="list-disc pl-5 mt-3 space-y-1">
+                <li>Zycus Data Platform: a company-wide analytics and reporting platform with a custom CDC architecture streaming 200+ Postgres databases and 1k+ tables into ClickHouse as the single source for analytics and reporting.</li>
+                <li>Building Merlin Insights, a chat-driven analytics layer where users query their data in natural language, blend their own data with Zycus data, and turn recurring questions into saved reports and dashboards.</li>
+            </ul>`
+        },
+        {
             title: 'Senior Data Engineer',
             company: 'Pixis.ai',
-            period: 'Jan 2025 - Present',
-            description: `Leading development of lakehouse architecture using Iceberg, nessie, warpstream(Kafka alternative), Doris DB, and other modern data engineering tools and frameworks, ingesting +500 Million events per day.
+            period: 'Jan 2025 - May 2026',
+            description: `Led development of lakehouse architecture using Iceberg, Nessie, WarpStream (Kafka alternative), Spark, Prefect, Doris/VeloDB, and other modern data engineering tools and frameworks, ingesting 500M+ events per day.
             <ul class="list-disc pl-5 mt-3 space-y-1">
                 <li>Helped Pixis build <a href="https://interact.pixis.ai/interact" class="text-accent hover:text-accent-hover font-semibold" target="_blank">Interact</a>, an AI powered conversational analytics interface for marketing teams to query ad performance and receive actionable insights. Leveraged MongoDB to store dynamic queries, responses, and campaign metadata for personalized recommendations and traceability.</li>
                 <li>Developed Nessie go-client library for seamless interaction with Nessie catalog.</li>
