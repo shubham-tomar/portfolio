@@ -1,0 +1,964 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Light theme (default) */
+:root {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --container-bg: #f3f4f6;
+  --text-primary: #1f2937;
+  --text-secondary: #4b5563;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --border: #e5e7eb;
+  /* Branch colours for the git-graph lines */
+  --git-1: #16a34a;
+  --git-2: #0284c7;
+  --git-3: #7c3aed;
+  --git-4: #db2777;
+  --git-5: #d97706;
+  --git-6: #0d9488;
+  color-scheme: light;
+}
+
+.dark {
+  --bg-primary: #0c0c0c;
+  --bg-secondary: #121519;
+  --container-bg: #1a1e24;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --accent: #3b82f6;
+  --accent-hover: #60a5fa;
+  --border: #2a3038;
+  --git-1: #86efac;
+  --git-2: #7dd3fc;
+  --git-3: #c4b5fd;
+  --git-4: #f9a8d4;
+  --git-5: #fcd34d;
+  --git-6: #5eead4;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-page: var(--bg-primary);
+  --color-surface: var(--bg-secondary);
+  --color-panel: var(--container-bg);
+  --color-ink: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-line: var(--border);
+  --font-sans: var(--font-instrument), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-martian), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    font-optical-sizing: auto;
+    font-kerning: normal;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings are set in the mono face, slightly condensed and tightly tracked. */
+  h1,
+  h2 {
+    font-family: var(--font-mono);
+    font-stretch: 84%;
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    text-wrap: balance;
+  }
+  h3 {
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+  /* Avoid a lone last word on a line of running text. */
+  p,
+  li,
+  dd {
+    text-wrap: pretty;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--container-bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+}
+
+/* Hero spotlight: a soft pool of light follows the cursor and the keywords
+   show through it. --spot is the pool's radius; it grows from nothing when the
+   pointer enters the hero and shrinks away when it leaves. */
+@property --spot {
+  syntax: "<length>";
+  inherits: true;
+  initial-value: 0px;
+}
+.hero {
+  --cursor-x: 50%;
+  --cursor-y: 50%;
+  --spot: 0px;
+  /* fade the light out before any of the hero's four edges can cut it off */
+  --hero-edge-fade: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%);
+  --hero-side-fade: linear-gradient(to right, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  transition: --spot 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero:hover {
+  --spot: 21vmax;
+}
+
+/* Keywords, visible only inside the pool, fading out gradually towards its edge. */
+.hero-wall {
+  -webkit-mask-image:
+    radial-gradient(
+      circle var(--spot) at var(--cursor-x) var(--cursor-y),
+      rgb(0 0 0 / 0.8) 0%,
+      rgb(0 0 0 / 0.66) 18%,
+      rgb(0 0 0 / 0.4) 40%,
+      rgb(0 0 0 / 0.18) 62%,
+      rgb(0 0 0 / 0.06) 82%,
+      transparent 100%
+    ),
+    var(--hero-edge-fade), var(--hero-side-fade);
+  mask-image:
+    radial-gradient(
+      circle var(--spot) at var(--cursor-x) var(--cursor-y),
+      rgb(0 0 0 / 0.8) 0%,
+      rgb(0 0 0 / 0.66) 18%,
+      rgb(0 0 0 / 0.4) 40%,
+      rgb(0 0 0 / 0.18) 62%,
+      rgb(0 0 0 / 0.06) 82%,
+      transparent 100%
+    ),
+    var(--hero-edge-fade), var(--hero-side-fade);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+
+/* The light itself: two overlapping tints, so it reads as a glow, not a disc. */
+.hero-glow {
+  -webkit-mask-image: var(--hero-edge-fade), var(--hero-side-fade);
+  mask-image: var(--hero-edge-fade), var(--hero-side-fade);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  background:
+    radial-gradient(
+      circle calc(var(--spot) * 0.55) at var(--cursor-x) var(--cursor-y),
+      color-mix(in oklab, var(--git-2) 16%, transparent),
+      transparent 100%
+    ),
+    radial-gradient(
+      circle var(--spot) at var(--cursor-x) var(--cursor-y),
+      color-mix(in oklab, var(--git-3) 10%, transparent),
+      transparent 100%
+    );
+}
+
+/* Keyword text carries a slow band of colour instead of flat grey. */
+.wall-row {
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--git-2) 70%, var(--text-secondary)),
+    color-mix(in oklab, var(--git-3) 70%, var(--text-secondary)) 22rem,
+    color-mix(in oklab, var(--git-6) 70%, var(--text-secondary)) 44rem,
+    color-mix(in oklab, var(--git-2) 70%, var(--text-secondary)) 66rem
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Each row holds the keyword list four times, so a quarter shift loops seamlessly. */
+.wall-row {
+  animation: wall-drift var(--drift, 120s) linear infinite;
+  animation-play-state: paused;
+}
+.wall-row:nth-child(even) {
+  animation-direction: reverse;
+}
+.hero:hover .wall-row {
+  animation-play-state: running;
+}
+
+@keyframes wall-drift {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+/* ---------- Git graph (home page) ----------
+   components/git.tsx sets the custom properties and data-attributes read here.
+   Until it runs (or with JavaScript off) everything is drawn fully lit. */
+
+/* --git-shift pushes the main line left into the page margin; the gutter grows
+   by the same amount, so the content stays where it was. */
+.git-root {
+  --git-shift: 0.25rem;
+  --git-gutter: calc(2rem + var(--git-shift));
+  --git-dim: color-mix(in srgb, var(--text-secondary) 45%, transparent);
+  position: relative;
+  margin-left: calc(-1 * var(--git-shift));
+  padding-left: var(--git-gutter);
+}
+@media (min-width: 48rem) {
+  .git-root {
+    --git-shift: 0.75rem;
+    --git-gutter: calc(3.5rem + var(--git-shift));
+  }
+}
+
+/* main line: grey track, coloured fill down to the dot, and the dot itself */
+.git-rail,
+.git-spine-fill {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  width: 1px;
+  pointer-events: none;
+}
+.git-rail {
+  bottom: 0;
+  background: var(--border);
+}
+.git-spine-fill {
+  height: var(--spine-fill, 0px);
+  background: var(--git-1);
+}
+.git-spine-dot,
+.git-traveller {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  border-radius: 50%;
+  background: currentcolor;
+  box-shadow: 0 0 0 4px color-mix(in srgb, currentcolor 22%, transparent);
+  pointer-events: none;
+}
+.git-spine-dot {
+  left: 0;
+  color: var(--git-1);
+  translate: var(--spine-x, 0.5px) var(--spine-y, 1.5rem);
+}
+
+/* a commit is lit once a dot has reached it */
+.git-commit {
+  --lit: 1;
+}
+.git-root[data-git="on"] .git-commit:not([data-reached="true"]) {
+  --lit: 0;
+}
+
+/* branch header: stub out of main, commit dot, label, trailing line */
+.git-eyebrow {
+  display: flex;
+  align-items: center;
+  height: 1.5rem;
+  margin-left: calc(-1 * var(--git-gutter));
+}
+.git-mark {
+  flex: none;
+  width: var(--git-gutter);
+  height: 1px;
+  background-color: var(--border);
+  background-image: linear-gradient(
+    to right,
+    var(--c) var(--mark-fill, 100%),
+    transparent var(--mark-fill, 100%)
+  );
+}
+
+.git-node {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  color: var(--c);
+  box-shadow: inset 0 0 0 1px currentcolor;
+  transition:
+    color 0.4s ease-out,
+    scale 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.git-node::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: currentcolor;
+  scale: var(--lit);
+  transition: scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.git-root[data-git="on"] .git-commit:not([data-reached="true"]) .git-node {
+  color: var(--git-dim);
+}
+.git-root[data-git="on"] .git-commit[data-reached="true"] .git-node {
+  animation:
+    git-catch 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
+    git-ripple 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes git-catch {
+  40% {
+    scale: 1.45;
+  }
+}
+@keyframes git-ripple {
+  from {
+    box-shadow:
+      inset 0 0 0 1px currentcolor,
+      0 0 0 0 color-mix(in srgb, currentcolor 70%, transparent);
+  }
+  to {
+    box-shadow:
+      inset 0 0 0 1px currentcolor,
+      0 0 0 16px transparent;
+  }
+}
+
+.git-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: color-mix(in srgb, var(--c) calc(45% + var(--lit) * 55%), transparent);
+  transition: color 0.4s ease-out;
+}
+.git-eyebrow .git-label {
+  margin: 0 0.75rem;
+}
+
+.git-trail {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  height: 1px;
+  background: var(--border);
+  -webkit-mask-image: linear-gradient(to right, #000, transparent);
+  mask-image: linear-gradient(to right, #000, transparent);
+}
+.git-trail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--c);
+  transform-origin: left;
+  scale: var(--lit) 1;
+  transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* line leading from a branch header (or from main, on small screens) into the journey */
+.git-connector {
+  height: 1px;
+  background-color: var(--border);
+  background-image: linear-gradient(
+    to right,
+    var(--c) var(--connector-fill, 100%),
+    transparent var(--connector-fill, 100%)
+  );
+}
+.git-connector-stub {
+  position: absolute;
+  top: calc(var(--step-mid) - 0.5px);
+  left: calc(-1 * var(--git-gutter));
+  width: var(--git-gutter);
+}
+
+/* the journey: its own line with one commit per event */
+.git-steps {
+  --step-gap: 2.25rem;
+  --step-mid: 12px; /* half the label row; read by git.tsx, so keep it in px */
+  --step-stub: 2rem;
+  position: relative;
+}
+.git-steps ol {
+  display: flex;
+  flex-direction: column;
+  row-gap: var(--step-gap);
+}
+.git-step {
+  position: relative;
+  padding-left: calc(var(--step-stub) + 1.5rem);
+}
+/* line down to the next commit, filled as far as the dot has got */
+.git-step::before {
+  --_filled: calc(var(--step-progress, 1) * 100%);
+  content: "";
+  position: absolute;
+  top: var(--step-mid);
+  left: 0;
+  width: 1px;
+  height: calc(100% + var(--step-gap));
+  background-image:
+    linear-gradient(
+      to bottom,
+      var(--step-color),
+      color-mix(in oklab, var(--step-next) var(--_filled), var(--step-color)) var(--_filled),
+      transparent var(--_filled)
+    ),
+    linear-gradient(var(--border), var(--border));
+}
+.git-step:last-child::before {
+  content: none;
+}
+/* stub from the line out to this commit */
+.git-step::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--step-mid) - 0.5px);
+  left: 1px;
+  width: var(--step-stub);
+  height: 1px;
+  background-color: var(--border);
+  background-image: linear-gradient(
+    to right,
+    var(--step-color) var(--step-run, 100%),
+    transparent var(--step-run, 100%)
+  );
+}
+.git-step-label {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  height: 1.5rem;
+  margin-left: -1.5rem;
+}
+.git-step-title {
+  margin-top: 0.5rem;
+}
+.git-step-text {
+  margin-top: 0.25rem;
+}
+.git-step-title,
+.git-step-text {
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.git-step-text {
+  transition-delay: 90ms;
+}
+.git-step-body {
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    translate 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.git-root[data-git="on"]
+  .git-step:not([data-reached="true"])
+  :is(.git-step-title, .git-step-text, .git-step-body) {
+  opacity: 0;
+  translate: 0 12px;
+  transition-delay: 0s;
+}
+
+.git-traveller {
+  left: 0.5px;
+  color: color-mix(
+    in oklab,
+    var(--travel-to, var(--git-1)) var(--travel-mix, 0%),
+    var(--travel-from, var(--git-1))
+  );
+  translate: var(--travel-x, 0) var(--travel-y, 0);
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+.git-steps[data-travelling="true"]:not([data-arrived="true"]) .git-traveller {
+  opacity: 1;
+}
+.git-steps[data-arrived="true"] .git-step:last-child .git-node {
+  scale: 1.35;
+}
+
+/* In the components layer so Tailwind utilities on the same element still win. */
+@layer components {
+  /* ---------- Shared pieces: square, hairline-bordered, no soft shadows ---------- */
+
+  .panel {
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
+  }
+  /* On hover the panel steps up and left, leaving a hard block of colour behind it. */
+  .panel-lift {
+    transition:
+      translate 0.2s ease-out,
+      box-shadow 0.2s ease-out,
+      border-color 0.2s ease-out;
+  }
+  .panel-lift:hover {
+    border-color: var(--c, var(--accent));
+    translate: -4px -4px;
+    box-shadow: 6px 6px 0 var(--c, var(--accent));
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid var(--accent);
+    background: var(--accent);
+    padding: 0.65rem 1.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: #fff;
+    transition:
+      translate 0.15s ease-out,
+      box-shadow 0.15s ease-out;
+  }
+  .btn:hover {
+    translate: -3px -3px;
+    box-shadow: 4px 4px 0 var(--text-primary);
+  }
+  .btn:active {
+    translate: 0 0;
+    box-shadow: none;
+  }
+
+  .chip {
+    border: 1px solid var(--border);
+    padding: 0.2rem 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+  }
+  .chip-lg {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    transition:
+      border-color 0.15s,
+      color 0.15s;
+  }
+  .chip-lg:hover {
+    border-color: var(--c);
+    color: var(--text-primary);
+  }
+
+  /* ---------- Header: a bar hanging from the top edge, divided into cells ---------- */
+
+  .site-bar {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    height: 3.5rem;
+    border: 1px solid var(--border);
+    border-top: 0;
+    background: color-mix(in srgb, var(--bg-secondary) 80%, transparent);
+  }
+  .site-bar-name {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0 1.25rem;
+    font-family: var(--font-mono);
+    font-stretch: 84%;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    color: var(--text-primary);
+  }
+  /* the same commit dot the git graph uses */
+  .site-bar-mark {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--git-1);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--git-1) 22%, transparent);
+  }
+  .site-bar-cell {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--border);
+    color: var(--text-secondary);
+    transition:
+      color 0.15s,
+      background-color 0.15s;
+  }
+  .site-bar-cell:hover {
+    background: var(--container-bg);
+    color: var(--text-primary);
+  }
+  .site-bar-link {
+    padding: 0 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .site-bar-link[aria-current="page"] {
+    color: var(--text-primary);
+  }
+  .site-bar-marker {
+    position: absolute;
+    inset: auto 0 -1px 0;
+    height: 2px;
+    background: var(--accent);
+  }
+  .site-menu {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-top: 0;
+    background: var(--bg-secondary);
+  }
+  .site-menu-link {
+    border-top: 1px solid var(--border);
+    padding: 0.9rem 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+  }
+  .site-menu-link:first-child {
+    border-top: 0;
+  }
+  .site-menu-link[aria-current="page"] {
+    color: var(--text-primary);
+    box-shadow: inset 2px 0 0 var(--accent);
+  }
+
+  /* ---------- About page ---------- */
+
+  /* portrait with a hard block of the branch colour set behind it */
+  .portrait {
+    align-self: start;
+    border: 1px solid var(--border);
+    box-shadow: 10px 10px 0 var(--c);
+    max-width: 19rem;
+  }
+
+  /* key facts as one row of bordered cells */
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    border: 1px solid var(--border);
+    background: var(--border);
+    gap: 1px;
+  }
+  @media (min-width: 64rem) {
+    .facts {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .facts > div {
+    background: var(--bg-secondary);
+    padding: 1rem 1.25rem;
+  }
+  .facts dt {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--c);
+  }
+  .facts dd {
+    margin-top: 0.35rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* skills: a radar chart or a clickable node graph, switched by a toggle */
+  .skills-view {
+    position: relative;
+    min-height: 30rem;
+  }
+
+  /* radar: the square chart sits inside padding that leaves room for the labels */
+  .radar {
+    padding: 3rem 4.75rem;
+  }
+  @media (min-width: 40rem) {
+    .radar {
+      padding: 3.5rem 7rem;
+    }
+  }
+  .radar-chart {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 24rem;
+    margin-inline: auto;
+  }
+  .radar-chart svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+  .radar-ring {
+    fill: none;
+    stroke: var(--border);
+  }
+  .radar-ring:nth-of-type(even) {
+    fill: color-mix(in srgb, var(--text-secondary) 5%, transparent);
+  }
+  .radar-axis {
+    stroke: var(--git-dim, var(--border));
+    stroke-dasharray: 1 4;
+  }
+  .radar-shape {
+    fill: color-mix(in srgb, var(--c) 28%, transparent);
+    stroke: var(--c);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+    scale: 0;
+    transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .radar-dot {
+    fill: var(--c);
+    scale: 0;
+    transition: scale 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .is-in .radar-shape,
+  .is-in .radar-dot {
+    scale: 1;
+  }
+  /* hovering a point (or its row in the list) enlarges it and shows its details */
+  .radar-dot {
+    transform-box: fill-box;
+    transform-origin: center;
+    pointer-events: none;
+  }
+  .is-in .radar-dot.is-active {
+    scale: 2.1;
+    transition-duration: 0.2s;
+  }
+  .radar-hit {
+    fill: transparent;
+    cursor: pointer;
+  }
+  .radar-tip {
+    position: absolute;
+    z-index: 5;
+    translate: -50% calc(-100% - 14px);
+    border: 1px solid var(--c);
+    background: var(--bg-primary);
+    padding: 0.4rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    line-height: 1.4;
+    white-space: nowrap;
+    color: var(--text-primary);
+    pointer-events: none;
+  }
+  .radar-tip b {
+    font-weight: 500;
+    color: var(--c);
+  }
+  .radar-tip i {
+    display: block;
+    font-style: normal;
+    font-size: 0.62rem;
+    color: var(--text-secondary);
+  }
+  .radar-row {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    margin-inline: -0.5rem;
+    padding: 0.22rem 0.5rem;
+    outline-offset: -2px;
+    transition: background-color 0.15s;
+  }
+  .radar-row.is-active {
+    background: color-mix(in srgb, var(--c) 16%, transparent);
+  }
+  .radar-dot.is-minor {
+    fill: var(--bg-secondary);
+    stroke: var(--c);
+  }
+  .radar-label {
+    position: absolute;
+    width: max-content;
+    max-width: 4.4rem;
+    color: var(--c);
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.35;
+  }
+  @media (min-width: 40rem) {
+    .radar-label {
+      max-width: 9.5rem;
+      font-size: 0.75rem;
+    }
+  }
+  .radar-label b {
+    font-weight: 500;
+    color: var(--c);
+  }
+  .radar-tick {
+    position: absolute;
+    translate: -50% -50%;
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    color: var(--git-dim, var(--text-secondary));
+  }
+
+  /* node graph: a hub with a ring of nodes; clicking a skill makes it the hub */
+  .skill-graph {
+    position: relative;
+    height: 30rem;
+  }
+  .skill-graph svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .skill-graph line {
+    stroke: var(--c, var(--border));
+    stroke-opacity: 0.55;
+  }
+  .skill-node {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    translate: -50% -9px; /* the dot, not the label, sits on the point */
+    color: var(--text-secondary);
+  }
+  .skill-node-dot {
+    display: grid;
+    place-items: center;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    box-shadow: inset 0 0 0 1px var(--c);
+    transition: box-shadow 0.25s ease-out;
+  }
+  .skill-node-dot::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--c);
+    scale: 0;
+    transition: scale 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  button.skill-node:hover .skill-node-dot,
+  button.skill-node:focus-visible .skill-node-dot {
+    box-shadow:
+      inset 0 0 0 1px var(--c),
+      0 0 0 6px color-mix(in srgb, var(--c) 22%, transparent);
+  }
+  button.skill-node:hover .skill-node-dot::after,
+  button.skill-node:focus-visible .skill-node-dot::after,
+  .skill-node.is-hub .skill-node-dot::after {
+    scale: 1;
+  }
+  button.skill-node:hover,
+  .skill-node.is-hub {
+    color: var(--text-primary);
+  }
+  .skill-node-label {
+    max-width: 5.2rem;
+    background: var(--bg-secondary);
+    padding: 0 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    line-height: 1.35;
+    text-align: center;
+  }
+  @media (min-width: 40rem) {
+    .skill-node-label {
+      max-width: 9rem;
+      font-size: 0.75rem;
+    }
+  }
+  .skill-node-label b {
+    display: block;
+    font-weight: 500;
+    color: var(--c);
+  }
+
+  /* tech stack: three bordered columns */
+  .stack-grid {
+    display: grid;
+    gap: 1px;
+    border: 1px solid var(--border);
+    background: var(--border);
+  }
+  @media (min-width: 48rem) {
+    .stack-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .stack-grid > div {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+  }
+  .stack-grid h3 {
+    margin-bottom: 1rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    color: var(--c);
+  }
+
+  /* experience bullets read like added lines in a diff */
+  .log-list li {
+    position: relative;
+    padding-left: 1.6rem;
+  }
+  .log-list li + li {
+    margin-top: 0.6rem;
+  }
+  .log-list li::before {
+    content: "+";
+    position: absolute;
+    left: 0.1rem;
+    font-family: var(--font-mono);
+    color: var(--c);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wall-row,
+  .animate-wave,
+  .animate-pulse {
+    animation: none;
+  }
+  .git-node,
+  .git-node::after,
+  .git-label,
+  .git-trail::after,
+  .git-step-title,
+  .git-step-text,
+  .git-step-body,
+  .radar-shape,
+  .radar-dot,
+  .skill-node-dot::after,
+  .panel-lift,
+  .btn,
+  .git-traveller {
+    transition: none;
+    animation: none !important;
+  }
+}
