@@ -43,14 +43,58 @@ export const keywords = [
   "Systems", "Algorithms", "Data Engineering", "S3", "System Design", "ETL",
 ];
 
+/**
+ * `detail` is the one-line label, `story` the sentence or two shown under it.
+ */
 export const timeline = [
-  { date: "April 1998", title: "Born", detail: "The journey begins" },
-  { date: "June 2016", title: "School", detail: "Dayawati Modi Academy" },
-  { date: "Sep 2019", title: "First Job", detail: "BTM Financials" },
-  { date: "Aug 2020", title: "Graduation", detail: "GLA University" },
-  { date: "Dec 2020", title: "Juspay", detail: "Data Engineer" },
-  { date: "Jan 2025", title: "Pixis.ai", detail: "Sr. Data Engineer" },
-  { date: "Jun 2026", title: "Zycus", detail: "Staff Engineer" },
+  {
+    date: "April 1998",
+    title: "Born",
+    detail: "The journey begins",
+    story: "The first commit. Everything after this builds on it.",
+  },
+  {
+    date: "June 2016",
+    title: "School",
+    detail: "Dayawati Modi Academy",
+    story:
+      "Finished school and picked computer science as the thing to study next.",
+  },
+  {
+    date: "Sep 2019",
+    title: "First Job",
+    detail: "BTM Financials",
+    story:
+      "Joined as a software engineer while still at university. Built a tweet sentiment pipeline for crypto markets, designed the database behind an edtech site, and moved regression tests out of Excel into a Python framework.",
+  },
+  {
+    date: "Aug 2020",
+    title: "Graduation",
+    detail: "GLA University",
+    story:
+      "Bachelor of Computer Science, specialising in data engineering and data warehousing.",
+  },
+  {
+    date: "Dec 2020",
+    title: "Juspay",
+    detail: "Data Engineer",
+    story:
+      "Four years on the in-house data platform: an ETL framework moving 200M+ transactions a day, a streaming pipeline at around 350k logs a second, and ClickHouse work that cut pipeline costs by about 80%.",
+  },
+  {
+    date: "Jan 2025",
+    title: "Pixis.ai",
+    detail: "Sr. Data Engineer",
+    story:
+      "Led the lakehouse build on Iceberg, Nessie, Warpstream and Doris, taking in 500M+ events a day. Wrote a Go client for Nessie and landed a fix in apache/iceberg-go.",
+  },
+  {
+    date: "Jun 2026",
+    title: "Zycus",
+    detail: "Staff Engineer",
+    story:
+      "Building the Zycus Data Platform, which streams 200+ Postgres databases into ClickHouse, and Merlin Insights, an agentic analytics layer where users can get insights from their raw data.",
+  },
 ];
 
 /**

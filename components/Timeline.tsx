@@ -56,7 +56,12 @@ export function Timeline() {
                 <h3 className="git-step-title text-2xl font-semibold text-ink">
                   {event.title}
                 </h3>
-                <p className="git-step-text text-muted">{event.detail}</p>
+                <div className="git-step-text">
+                  <p className="font-medium text-muted">{event.detail}</p>
+                  <p className="mt-2 max-w-[46ch] text-[0.9375rem] leading-relaxed text-muted">
+                    {event.story}
+                  </p>
+                </div>
               </li>
             ))}
           </ol>
