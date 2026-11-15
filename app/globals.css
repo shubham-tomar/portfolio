@@ -128,7 +128,7 @@
   transition: --spot 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .hero:hover {
-  --spot: 21vmax;
+  --spot: 15vmax;
 }
 
 /* Keywords, visible only inside the pool, fading out gradually towards its edge. */
